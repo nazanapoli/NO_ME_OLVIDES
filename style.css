@@ -45,7 +45,23 @@ header{
   background-color: #AD8B73;
 }
 
-
+.productos{
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  
+}
+aside{
+  grid-area: aside;
+}
+main{
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.card{
+  margin: 1rem;
+}
 
 
   /*    FOOTER    */
