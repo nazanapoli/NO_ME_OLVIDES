@@ -16,17 +16,39 @@
     <header>
         <div class="containerHeader">
             <div>
-                <a href=""><img src="images/logo.jpg" class="imgLogo" alt=""></a>
+                <a class="btn btn-primary menuHamburguesa" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><img src="images/menu.png" alt=""></a>
+                  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                      <h5>Menu</h5>
+                      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="">
+                      <div class="">
+                          <ul class="ulMenu">
+                          <li class="liBootrstrap"><a class="dropdown-item" href="#">Inicio</a></li>
+                          <li><a class="dropdown-item" href="#"> Productos</a></li>
+                          <li><a class="dropdown-item" href="#">Preguntas Frecuentes</a></li>
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                <a href=""><img src="images/logo.jpg" class="imgLogo ocultarResponsive" alt=""></a>
             </div>
             <div>
+                <a href=""><img src="images/logo.jpg" class="displayNone imgLogo mostrarResponsive" alt=""></a>
                 <form class="busqueda">
-                    <input class="inputHeader" type="search" aria-label="Search">
-                    <button class="btnHeader" type="submit"><img src="images/lupa.png" alt=""></button>
+                    <input class="inputHeader ocultarResponsive" type="search" aria-label="Search">
+                    <button class="btnHeader ocultarResponsive" type="submit"><img src="images/lupa.png" alt=""></button>
                 </form>
             </div>
             <div>
-                <a href="">Registro |</a>
-                <a href="">Iniciar sesion</a>
+                <img src="images/user.png" class="mostrarResponsive displayNone" alt="">
+                <a href="" class="ocultarResponsive">Registro |</a>
+                <a href="" class="ocultarResponsive">Iniciar sesion</a>
             </div>
             <div>
                 <a href=""><img src="images/carrito.png" alt=""></a>
@@ -108,7 +130,7 @@
             <div class="containerRedes">
                 <h6>Redes Sociales</h6>
                 <ul>
-                    <li class="footerIg"><a href=""><img src="images/instagram.png" alt=""></a></li>
+                    <li class="footerIg"><a href="" class="rotacion"><img src="images/instagram.png" alt=""></a></li>
                     <li class="footerFb"><a href=""><img src="images/facebook.png" alt=""></a></li>
                 </ul>
             </div>

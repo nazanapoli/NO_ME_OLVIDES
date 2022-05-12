@@ -7,6 +7,10 @@ a{
   text-decoration: none;
   color: #E3CAA5;
 }
+a:hover{
+  color: #e1d2bcb7;
+}
+h5,
 h6{
   font-weight: 600;
   color: #E3CAA5;
@@ -20,6 +24,9 @@ li{
   color: #E3CAA5;
 }
 /*      HEADER         */
+.displayNone{
+  display: none;
+}
 header{
   background: #AD8B73;
 }
@@ -33,6 +40,9 @@ header{
 .imgLogo{
   height: 80px;
 }
+.menuHamburguesa{
+  display: none;
+}
 .inputHeader{
   border: none;
   border-bottom: #E3CAA5 3px solid;
@@ -44,9 +54,10 @@ header{
   border: none;
   background-color: #AD8B73;
 }
-
+.user{
+  display: none;
+}
 /* PRODUCTOS */
-
 .productos{
   max-width: 1000px;
   margin: auto;
@@ -65,8 +76,6 @@ main{
 .card{
   margin: 1rem;
 }
-
-
   /*    FOOTER    */
 footer{
   background: #AD8B73;
@@ -80,4 +89,70 @@ footer{
 }
 .footerIg{
   margin-bottom: 1rem;
+}
+@media (max-width: 768px) {
+  .containerHeader{
+    padding: 1rem;
+  }
+  .menuHamburguesa{
+    display: flex;
+  }
+  .btn{
+    background-color: #AD8B73;
+    border: none;
+  }
+  .btn:hover{
+    background-color: #AD8B73;
+  }
+  h5{
+    font-size: 24px;
+  }
+  .dropdown-item{
+    color: #E3CAA5;
+    border-bottom: #E3CAA5 2px solid;
+    font-size: 1.5rem;
+  }
+  .dropdown-item:hover{
+    background-color: #AD8B73;
+    color: #E3CAA5;
+  }
+  .offcanvas{
+    background-color: #AD8B73;
+  }
+  .ocultarResponsive{
+    display: none;
+  }
+  .mostrarResponsive{
+    display: flex;
+  }
+
+
+  .productos{
+    display: grid;
+    grid-template-columns:100%;
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+  }
+  aside{
+    display: none;
+  }
+  .card{
+    margin: 1rem 0;
+  }
+
+
+
+
+  .containerFooter{
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .containerFooter div{
+    margin: 0.5rem 0 0.5rem 0;
+  }
 }
