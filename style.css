@@ -91,6 +91,7 @@ footer{
   margin-bottom: 1rem;
 }
 @media (max-width: 768px) {
+  /* HEADER */
   .containerHeader{
     padding: 1rem;
   }
@@ -125,8 +126,7 @@ footer{
   .mostrarResponsive{
     display: flex;
   }
-
-
+  /* PRODCUTOS */
   .productos{
     display: grid;
     grid-template-columns:100%;
@@ -141,11 +141,8 @@ footer{
   .card{
     margin: 1rem 0;
   }
-
-
-
-
-  .containerFooter{
+/* FOOTER */
+ .containerFooter{
     max-width: 1000px;
     margin: auto;
     padding: 1rem;
