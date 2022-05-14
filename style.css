@@ -76,6 +76,29 @@ main{
 .card{
   margin: 1rem;
 }
+.card-compra{
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+.btnCompra{
+  width: 31%;
+  background-color: #AD8B73;
+  border: none;
+  color: #E3CAA5;
+  font-weight: bold;
+}
+.btnCompra:hover{
+  background-color: #ad8b73cc;
+}
+.precio{
+  margin: 0%;
+  width: 70%;
+  text-align: center;
+  font-size: 1.5rem;
+  background-color: #AD8B73;
+  color: #E3CAA5;
+}
   /*    FOOTER    */
 footer{
   background: #AD8B73;
