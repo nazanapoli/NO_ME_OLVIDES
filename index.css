@@ -1,0 +1,108 @@
+body{
+    background-color: #E3CAA5;
+}
+main{
+    display: block;
+}
+h3{
+    font-weight: bold;
+}
+.carousel{
+    max-width: 1000px;
+    margin: 1rem auto;
+}
+.promocion{
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+    text-align: center;
+    background-color: #E3CAA5;
+}
+.background{
+    background-color: aliceblue;
+}
+.ultimosProductos{
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: aliceblue;
+}
+.h3Contacto{
+    background-color: #E3CAA5;
+    margin: 0 auto;
+    max-width: 1000px;
+    text-align: center;
+}
+.formulario{
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #E3CAA5;
+}
+.formulario label{
+    margin: 0;
+    font-weight: bold;
+}
+.formulario input{
+    margin-bottom: 0.5rem;
+    padding-left: 0.2rem;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 3px solid #AD8B73;
+}
+.formulario textarea{
+    margin-bottom: 0.5rem;
+    height: 250px;
+    resize: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 3px solid #AD8B73;
+    border-left: 3px solid #AD8B73;
+}
+.formulario button{
+    border-radius: 5px;
+    border: 3px solid #AD8B73;
+    width: 50%;
+    margin: auto;
+    display: block;
+    background-color: #AD8B73;
+    color: #E3CAA5;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.btnFormulario{
+    max-width: 1000px;
+    margin: 0;
+    background: rgb(227,202,165);
+    background: -moz-linear-gradient(90deg, rgba(227,202,165,1) 0%, rgba(173,139,115,1) 25%, rgba(173,139,115,1) 75%, rgba(227,202,165,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(227,202,165,1) 0%, rgba(173,139,115,1) 25%, rgba(173,139,115,1) 75%, rgba(227,202,165,1) 100%);
+    background: linear-gradient(90deg, rgba(227,202,165,1) 0%, rgba(173,139,115,1) 25%, rgba(173,139,115,1) 75%, rgba(227,202,165,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e3caa5",endColorstr="#e3caa5",GradientType=1);
+}
+@media (max-width: 1200px) {
+    .carousel{
+        margin: 0 auto;
+    }
+    .ultimosProductos{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .card{
+        margin: 1rem auto;
+    }
+}
+@media (max-width: 768px) {
+    .carousel{
+        margin: 0 auto;
+    }
+    .ultimosProductos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
