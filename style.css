@@ -43,6 +43,12 @@ header{
 .menuHamburguesa{
   display: none;
 }
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+  color: #fff;
+  background-color: #AD8B73;
+  border-color: #E3CAA5;
+  box-shadow: none;
+}
 .inputHeader{
   border: none;
   border-bottom: #E3CAA5 3px solid;

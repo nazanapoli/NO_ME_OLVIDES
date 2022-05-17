@@ -33,6 +33,12 @@
 const MAYORIA_EDAD = 18
 let edad = prompt("Ingrese su edad: ");
     
-while (edad == null || /\D/.test(edad) || edad == "" || edad<MAYORIA_EDAD) {
+// OPCION 1
+// while (edad == null || /\D/.test(edad) || edad == "" || edad<MAYORIA_EDAD) {
+//     edad = prompt("Ingrese su edad en caracteres numericos y recuerde que debe ser mayor de edad: ");
+// };
+
+// OPCION 2
+while (!edad || isNaN(edad) || edad<MAYORIA_EDAD) {
     edad = prompt("Ingrese su edad en caracteres numericos y recuerde que debe ser mayor de edad: ");
 };

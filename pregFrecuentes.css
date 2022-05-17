@@ -1,0 +1,28 @@
+.dudas{
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+}
+.accordion-button{
+    /* background-color: #E3CAA5; */
+    background-image: url(images/background-preguntasFrecuentes.svg);
+    background-size: cover;
+    /* background: fixed; */
+    border: 3px solid #AD8B73;
+    margin: 1rem auto;
+}
+.accordion-button:focus {
+    z-index: 3;
+    border: 3px solid #AD8B73;
+    outline: 0;
+    box-shadow:none;
+}
+.accordion-button:not(.collapsed) {
+        color: #AD8B73;
+        background-color: beige;
+        box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+    }
+.accordion-button:not(.collapsed)::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        transform: rotate(-180deg);
+}
