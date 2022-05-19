@@ -1,3 +1,11 @@
+//FUNCIONES
+function valorProductos(){
+    while (!producto || isNaN(producto) || producto<0) {
+        producto = +prompt("Por favor ingrese la cantidad de items a agregar, solo con caracteres numericos: ");
+    };
+    valorProductos = producto*1000;
+ }
+
 const MAYORIA_EDAD = 18
 let edad = prompt("Ingrese su edad: ");
     
@@ -11,24 +19,12 @@ while (!edad || isNaN(edad) || edad<MAYORIA_EDAD) {
     edad = prompt("Ingrese su edad en caracteres numericos y recuerde que debe ser mayor de edad: ");
 };
 
-function agregarCarrito (){
-    producto*1000
-}
-function eliminarCarrito (){
-    subtotal-(productoEliminado*1000)
-}
-
-// PRODUCTOS A AGREGAR
-let producto = prompt('Cantidad de items a agregar(unidad: $1000): ')
-while (!producto || isNaN(producto) || producto<0) {
-    producto = prompt("Por favor ingrese la cantidad de items a agregar, solo con caracteres numericos: ");
-};
-
-// SUBTOTAL CON LOS PRODUCTOS AGREGADOS
-let subtotal = producto*1000
+//SIM DE COMPRA
+let producto = +prompt('Cantidad de items a agregar(unidad: $1000):');
+valorProductos()
 
 // ALERT CON SUBTOTAL
-alert(`Llevas gastado= $${subtotal}`)
+alert(`Llevas gastado= $${valorProductos}`)
 
 //PRODUCTOS A QUITAR DEL CARRITO
 let productoEliminado = prompt('Si deseas eliminar items indicanos cuantas unidades(cada unidad: $1000), si no queres eliminar nada ingresa: 0: ')
@@ -36,7 +32,7 @@ while (!productoEliminado || isNaN(productoEliminado) || productoEliminado<0 || 
     productoEliminado = prompt("Por favor ingrese la cantidad de items a eliminar, no puede ser menor que cero ni mayor que los productos agregados al carrito, siempre con caracteres numericos: ");
 };
 
-let total = subtotal-(productoEliminado*1000)
+let total = valorProductos-(productoEliminado*1000)
 
 //ALERT CON TOTAL A PAGAR
 alert(`El total a pagar es $${total}`)
@@ -57,9 +53,7 @@ if (total<=0){
         confirm(`Resumen de tu compra: El valor total de los productos seleccionados es $${total}, debes abonar $450 del envio a ${direccion} en el momento de la entrega`);
     } else {
         alert('El valor del envio es $600 y se abona en tu domicilio');
-        let direccion = prompt('El valor del envio es $450 y se abona en tu domicilio, dejanos tu direccion:');
+        let direccion = prompt('El valor del envio es $600 y se abona en tu domicilio, dejanos tu direccion:');
         confirm(`Resumen de tu compra: El valor total de los productos seleccionados es $${total} y debes abonar $600 del envio a ${direccion} en el momento de la entrega`);
     }
 }
-
-
