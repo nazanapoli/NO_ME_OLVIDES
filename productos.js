@@ -1,59 +1,71 @@
 //FUNCIONES
-function valorProductos(){
-    while (!producto || isNaN(producto) || producto<0) {
-        producto = +prompt("Por favor ingrese la cantidad de items a agregar, solo con caracteres numericos: ");
+function valorProductos(cantidadProducto){
+    while (!cantidadProducto || isNaN(cantidadProducto) || cantidadProducto<0) {
+        cantidadProducto = +prompt("Por favor ingrese la cantidad de items a agregar, solo con caracteres numericos: ");
     };
-    valorProductos = producto*1000;
+    return cantidadProducto*VALOR_VELA;
  }
+ function msjEnvio(valorEnvio) {
+    const DIRECCION = prompt(`El valor del envio es $${valorEnvio} y se abona en tu domicilio, dejanos tu direccion:`);
+    confirm(`Resumen de tu compra: El valor total de los productos seleccionados es $${total}, debes abonar $${valorEnvio} del envio a ${DIRECCION} en el momento de la entrega`);
+}
 
-const MAYORIA_EDAD = 18
+const MAYORIA_EDAD = 18;
 let edad = prompt("Ingrese su edad: ");
-    
-// OPCION 1
-// while (edad == null || /\D/.test(edad) || edad == "" || edad<MAYORIA_EDAD) {
-//     edad = prompt("Ingrese su edad en caracteres numericos y recuerde que debe ser mayor de edad: ");
-// };
-
-// OPCION 2
 while (!edad || isNaN(edad) || edad<MAYORIA_EDAD) {
-    edad = prompt("Ingrese su edad en caracteres numericos y recuerde que debe ser mayor de edad: ");
+    edad = +prompt("Ingrese su edad en caracteres numericos y recuerde que debe ser mayor de edad: ");
 };
 
 //SIM DE COMPRA
-let producto = +prompt('Cantidad de items a agregar(unidad: $1000):');
-valorProductos()
+const VALOR_VELA = 1000;
+let cantidadProducto = +prompt(`Cantidad de items a agregar(unidad: $${VALOR_VELA}):`);
+valorProductos(cantidadProducto)
 
 // ALERT CON SUBTOTAL
-alert(`Llevas gastado= $${valorProductos}`)
+const VALOR_PARCIAL = cantidadProducto*VALOR_VELA
+alert(`Llevas gastado= $${VALOR_PARCIAL}`)
 
 //PRODUCTOS A QUITAR DEL CARRITO
-let productoEliminado = prompt('Si deseas eliminar items indicanos cuantas unidades(cada unidad: $1000), si no queres eliminar nada ingresa: 0: ')
-while (!productoEliminado || isNaN(productoEliminado) || productoEliminado<0 || productoEliminado>producto) {
-    productoEliminado = prompt("Por favor ingrese la cantidad de items a eliminar, no puede ser menor que cero ni mayor que los productos agregados al carrito, siempre con caracteres numericos: ");
+let cantProductoEliminado = +prompt(`Si deseas eliminar items indicanos cuantas unidades(cada unidad: $${VALOR_VELA}), si no queres eliminar nada ingresa: 0: `)
+while (!cantProductoEliminado || isNaN(cantProductoEliminado) || cantProductoEliminado<0 || cantProductoEliminado>cantidadProducto) {
+    cantProductoEliminado = prompt("Por favor ingrese la cantidad de items a eliminar, no puede ser menor que cero ni mayor que los productos agregados al carrito, siempre con caracteres numericos: ");
 };
 
-let total = valorProductos-(productoEliminado*1000)
+let total = VALOR_PARCIAL-(cantProductoEliminado*VALOR_VELA)
 
 //ALERT CON TOTAL A PAGAR
 alert(`El total a pagar es $${total}`)
 
 //SELECCIONA LA FORMA DE RETIRO/ENVIO DE PRODUCTOS Y CONFIRMACION
+const ENVIO_1 = 450;
+const ENVIO_2 = 600;
 if (total<=0){
     alert('Eliminaste todos los productos de tu carrito de compras')
 } else {    
     alert('A continuacion podes elegir la forma de envio o retiro de tu compra');
     let envio = prompt('Elegi la forma de retiro de los productos: 0- Retiro personalmente; 1-Envio a CABA; 2-Envio a GBA');
     while (!envio || isNaN(envio) || envio<0 || envio>=3) {
-        envio = prompt("Por favor ingrese un numero contenido en las opciones anteriores, 0- Retiro personalmente; 1-Envio a CABA; 2-Envio a GBA: ");
+        envio = +prompt("Por favor ingrese un numero contenido en las opciones anteriores, 0- Retiro personalmente; 1-Envio a CABA; 2-Envio a GBA: ");
     }
     if(envio==0){
         alert('Te esperamos de lunes a jueves de 9 a 16hs')
     } else if(envio==1){
-        let direccion = prompt('El valor del envio es $450 y se abona en tu domicilio, dejanos tu direccion:');
-        confirm(`Resumen de tu compra: El valor total de los productos seleccionados es $${total}, debes abonar $450 del envio a ${direccion} en el momento de la entrega`);
+        msjEnvio(ENVIO_1)
     } else {
-        alert('El valor del envio es $600 y se abona en tu domicilio');
-        let direccion = prompt('El valor del envio es $600 y se abona en tu domicilio, dejanos tu direccion:');
-        confirm(`Resumen de tu compra: El valor total de los productos seleccionados es $${total} y debes abonar $600 del envio a ${direccion} en el momento de la entrega`);
+        msjEnvio(ENVIO_2)
     }
 }
+
+class VelaDeSoja {
+    constructor(peso, aroma, material){
+        this.peso = peso
+        this.aroma = aroma
+        this.material = material
+    }
+}
+
+const velaABC = new VelaDeSoja('500g','Coconut','Vidrio')
+const vela123 = new VelaDeSoja('350g','Lemon Grass','Madera')
+const velaXYZ = new VelaDeSoja('475g','Vainilla','Ceramica')
+
+console.table(velaABC, vela123, velaXYZ)
