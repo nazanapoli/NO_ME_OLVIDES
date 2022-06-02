@@ -3,12 +3,22 @@
   padding: 0;
   font-family: 'Varela Round', sans-serif;
   font-weight: 400; }
+body{
+  background-color: antiquewhite;
+}
 a{
   text-decoration: none;
   color: #E3CAA5;
 }
 a:hover{
   color: #e1d2bcb7;
+}
+aside{
+  margin: 0;
+}
+h3,
+h4{
+  text-align: center;
 }
 h5,
 h6{
@@ -71,16 +81,57 @@ header{
   grid-template-columns: 25% 75%;
 }
 .divAside{
-  border: #AD8B73 5px solid;
-  height: 800px;
+  display: grid;
+  grid-template-rows: 4% 48% 48%;
+  background-color: silver;
+  border-radius: 5px;
+  height: 600px;
   width: 200px;
+  margin: 1rem auto;
 }
+.containerFiltro{
+  width: 100%;
+}
+.divFiltro{
+  display: flex;
+  flex-direction: column;
+}
+.containerInput input,
+.containerInput select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+ 
+.containerInput{
+  margin: 0;
+  padding: 0 20px;
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: 20% 80%;
+}
+.containerInput input{
+  width: 80%;
+  height: 80%;
+  margin: auto;
+}
+.containerInput input{
+  border: 3px solid gray;
+  margin: auto;
+}
+.containerInput input:checked{
+  background: #AD8B73;
+  border: none;
+  margin: auto;
+}
+
 main{
   display: grid;
   grid-template-columns: 50% 50%;
+  width: 100%;
 }
 .card{
-  margin: 1rem;
+  margin: 1rem auto;
 }
 .card-compra{
   margin: 0;
@@ -118,6 +169,10 @@ footer{
 }
 .footerIg{
   margin-bottom: 1rem;
+}
+
+#sugerenciaUsuario li{
+  color: black;
 }
 @media (max-width: 768px) {
   /* HEADER */
