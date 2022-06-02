@@ -6,6 +6,9 @@
 body{
   background-color: antiquewhite;
 }
+div{
+  margin: 0;
+}
 a{
   text-decoration: none;
   color: #E3CAA5;
@@ -32,6 +35,9 @@ ul{
 }
 li{
   color: #E3CAA5;
+}
+.marginAuto{
+  margin: auto;
 }
 /*      HEADER         */
 .displayNone{
@@ -91,35 +97,36 @@ header{
 }
 .containerFiltro{
   width: 100%;
+  margin: auto;
 }
 .divFiltro{
   display: flex;
   flex-direction: column;
 }
-.containerInput input,
-.containerInput select{
+#containerInput input,
+#containerInput select{
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 }
  
-.containerInput{
+#containerInput{
   margin: 0;
   padding: 0 20px;
   display: grid;
   flex-direction: row;
   grid-template-columns: 20% 80%;
 }
-.containerInput input{
+#containerInput input{
   width: 80%;
   height: 80%;
   margin: auto;
 }
-.containerInput input{
+#containerInput input{
   border: 3px solid gray;
   margin: auto;
 }
-.containerInput input:checked{
+#containerInput input:checked{
   background: #AD8B73;
   border: none;
   margin: auto;
@@ -170,7 +177,9 @@ footer{
 .footerIg{
   margin-bottom: 1rem;
 }
-
+.alignCenter{
+  text-align: center;
+}
 #sugerenciaUsuario li{
   color: black;
 }
@@ -218,6 +227,7 @@ footer{
   main{
     display: flex;
     flex-direction: column;
+    width: auto;
   }
   aside{
     display: none;

@@ -34,19 +34,19 @@
                   </div>
                 <a href="index.html"><img src="images/logo.jpg" class="imgLogo ocultarResponsive" alt="Logo"></a>
             </div>
-            <div>
+            <div class="marginAuto">
                 <a href="index.html"><img src="images/logo.jpg" class="displayNone imgLogo mostrarResponsive" alt="Logo"></a>
                 <form class="busqueda">
                     <input class="inputHeader ocultarResponsive" type="search" aria-label="Search">
                     <button class="btnHeader ocultarResponsive" type="submit"><img src="images/lupa.png" alt=""></button>
                 </form>
             </div>
-            <div>
+            <div class="marginAuto">
                 <img src="images/user.png" class="mostrarResponsive displayNone" alt="">
                 <a href="" class="ocultarResponsive">Registro |</a>
                 <a href="" class="ocultarResponsive">Iniciar sesion</a>
             </div>
-            <div>
+            <div class="marginAuto">
                 <a href=""><img src="images/carrito.png" alt=""></a>
             </div>
         </div>
@@ -58,15 +58,15 @@
                 <div class="containerFiltro">
                     <h4>Precio</h4>
                     <div class="divFiltro">
-                        <div class="containerInput">
+                        <div class="containerInput" id="containerInput">
                             <input type="radio" name="my-input" id="no">
                             <label for="no">Hasta $1000</label>
                         </div>
-                        <div class="containerInput">
+                        <div class="containerInput" id="containerInput">
                             <input type="radio" name="my-input" id="no">
                             <label for="no">$1000  $1500</label>
                         </div>
-                        <div class="containerInput">
+                        <div class="containerInput" id="containerInput">
                             <input type="radio" name="my-input" id="no">
                             <label for="no">Desde $1500</label>
                         </div>
@@ -75,23 +75,11 @@
 
                 <div class="containerFiltro">
                     <h4>Aroma</h4>
-                <div class="divFiltro">
-                    <div class="containerInput">
+                <div class="divFiltro" id="divFiltroAroma">
+                    <!-- <div class="containerInput" id="containerInput">
                         <input type="radio" name="my-input" id="no">
                         <label for="no">Coconut</label>
-                    </div>
-                    <div class="containerInput">
-                        <input type="radio" name="my-input" id="no">
-                        <label for="no">Chocolate</label>
-                    </div>
-                    <div class="containerInput">
-                        <input type="radio" name="my-input" id="no">
-                        <label for="no">Lemon Grass</label>
-                    </div>
-                    <div class="containerInput">
-                        <input type="radio" name="my-input" id="no">
-                        <label for="no">Vainilla</label>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -105,7 +93,7 @@
                 </div>
                 <div class="card-compra">
                     <button class="btnCompra">-</button>
-                    <p class="precio">$1000</p>
+                    <p class="precio">$670</p>
                     <button class="btnCompra">+</button>
                 </div>
               </div>
@@ -117,7 +105,7 @@
                 </div>
                 <div class="card-compra">
                     <button class="btnCompra">-</button>
-                    <p class="precio">$1000</p>
+                    <p class="precio">$900</p>
                     <button class="btnCompra">+</button>
                 </div>
               </div>
@@ -129,7 +117,7 @@
                 </div>
                 <div class="card-compra">
                     <button class="btnCompra">-</button>
-                    <p class="precio">$1000</p>
+                    <p class="precio">$1499</p>
                     <button class="btnCompra">+</button>
                 </div>
               </div>
@@ -141,7 +129,7 @@
                 </div>
                 <div class="card-compra">
                     <button class="btnCompra">-</button>
-                    <p class="precio">$1000</p>
+                    <p class="precio">$999</p>
                     <button class="btnCompra">+</button>
                 </div>
               </div>
@@ -150,16 +138,16 @@
     <footer>
         <div class="containerFooter">
             <div class="containerNavegacion">
-                <h6>Navegacion</h6>
-                <ul>
+                <h6 class="alignCenter">Navegacion</h6>
+                <ul class="alignCenter">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="productos.html">Productos</a></li>
                     <li><a href="pregFrecuentes.html">Preguntas Frecuentes</a></li>
                 </ul>
             </div>
             <div class="containerFormasDeContacto">
-                <h6>Contacto</h6>
-                <ul>
+                <h6 class="alignCenter">Contacto</h6>
+                <ul class="alignCenter">
                     <li><img src="images/whatsapp.png" alt=""> 1124856105</li>
                     <li><img src="images/mail.png" alt=""> nomeolvidescandles@gmail.com</li>
                     <li><img src="images/location.png" alt="">Avellaneda, Zona sur, Buenos Aires.</li>
@@ -167,8 +155,8 @@
 
             </div>
             <div class="containerRedes">
-                <h6>Redes Sociales</h6>
-                <ul>
+                <h6 class="alignCenter">Redes Sociales</h6>
+                <ul class="alignCenter">
                     <li class="footerIg"><a href="https://www.instagram.com/nomeolvides.candles/" target="_blank"><img src="images/instagram.png" alt=""></a></li>
                     <li class="footerFb"><a href="https://m.facebook.com/nomeolvides.candle/" target="_blank"><img src="images/facebook.png" alt=""></a></li>
                 </ul>

@@ -32,3 +32,12 @@ for (const aroma of aromasSugeridos) {
     liAroma.innerHTML = `${aroma}`
     sugerenciaUsuario.append(liAroma)
 }
+
+let divFiltroAroma = document.getElementById('divFiltroAroma')
+
+
+for (const vela of arrayStock) {
+    let containerInput = document.createElement("div")
+    containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`
+    divFiltroAroma.append(containerInput)
+}
