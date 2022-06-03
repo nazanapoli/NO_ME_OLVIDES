@@ -14,30 +14,74 @@ const arrayStock = [
     new Producto(4,'Vela Dinamo','270g','Chocolate',999),
 ]
 
-//DOM
-const aromasSugeridos = []
-do{
-    let aromaSugerido = prompt("Que 3 aromas te interesarian ver en nuestras velas: ");
-    aromasSugeridos.push(aromaSugerido)
-    
-} while (aromasSugeridos.length<3)
-console.log(aromasSugeridos)
+// //DOM
+// const aromasSugeridos = []
+// do{
+//     let aromaSugerido = prompt("Que 3 aromas te interesarian ver en nuestras velas: ");
+//     aromasSugeridos.push(aromaSugerido)
+// } while (aromasSugeridos.length<3)
+// console.log(aromasSugeridos)
 
-let main = document.getElementById('main')
-let divSugerencia = document.createElement('div')
-main.append(divSugerencia)
-divSugerencia.innerHTML = '<h3>Aromas sugeridos</h3><ul id="sugerenciaUsuario">Tus sugerencias quedaron registradas:</ul>'
-for (const aroma of aromasSugeridos) {
-    let liAroma = document.createElement("li")
-    liAroma.innerHTML = `${aroma}`
-    sugerenciaUsuario.append(liAroma)
-}
+// let main = document.getElementById('main')
+// let divSugerencia = document.createElement('div')
+// main.append(divSugerencia)
+// divSugerencia.innerHTML = '<h3>Aromas sugeridos</h3><ul id="sugerenciaUsuario">Tus sugerencias quedaron registradas:</ul>'
+// for (const aroma of aromasSugeridos) {
+//     let liAroma = document.createElement("li")
+//     liAroma.innerHTML = `${aroma}`
+//     sugerenciaUsuario.append(liAroma)
+// }
 
 let divFiltroAroma = document.getElementById('divFiltroAroma')
-
-
 for (const vela of arrayStock) {
     let containerInput = document.createElement("div")
     containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`
     divFiltroAroma.append(containerInput)
 }
+
+const carrito = []
+const valorInicial = 0
+
+let compraApoel = document.getElementById('compraApoel')
+compraApoel.addEventListener('click',()=>{
+    carrito.push(arrayStock[0].precio);
+    containerInput.innerHTML = `<p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
+        previo + actual,
+        valorInicial)}</p>`
+        divFiltroAroma.append(containerInput)
+})
+
+let compraBurgio = document.getElementById('compraBurgio')
+compraBurgio.addEventListener('click',()=>{
+    carrito.push(arrayStock[1].precio)
+    containerInput.innerHTML = `<p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
+        previo + actual,
+        valorInicial)}</p>`
+        divFiltroAroma.append(containerInput)
+})
+let compraCasteldefells = document.getElementById('compraCasteldefells')
+compraCasteldefells.addEventListener('click',()=>{
+    carrito.push(arrayStock[2].precio)
+    containerInput.innerHTML = `<p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
+        previo + actual,
+        valorInicial)}</p>`
+        divFiltroAroma.append(containerInput)
+})
+let compraDinamo = document.getElementById('compraDinamo')
+compraDinamo.addEventListener('click',()=>{
+    carrito.push(arrayStock[3].precio)
+    containerInput.innerHTML = `<div class="prueba"><p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
+        previo + actual,
+        valorInicial)}</p></div>`
+        divFiltroAroma.append(containerInput)
+})
+
+
+// for (const e of carrito) {
+    let containerInput = document.createElement("div")
+    // containerInput.innerHTML = `<div class="containerInput" id="containerInput"><p>Total: $${carrito.reduce((previo,actual) =>
+    // previo + actual,
+    // valorInicial)}</p></div>`
+    // divFiltroAroma.append(containerInput)
+// s
+

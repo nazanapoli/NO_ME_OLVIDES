@@ -83,6 +83,13 @@ h3{
     background: linear-gradient(90deg, rgba(227,202,165,1) 0%, rgba(173,139,115,1) 25%, rgba(173,139,115,1) 75%, rgba(227,202,165,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e3caa5",endColorstr="#e3caa5",GradientType=1);
 }
+.mensajeCompletar{
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 1rem 0 0 0;
+}
 @media (max-width: 1200px) {
     .carousel{
         margin: 0 auto;
