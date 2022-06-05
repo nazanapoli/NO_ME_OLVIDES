@@ -15,41 +15,6 @@ const arrayStock = [
 ]
 
 // //DOM
-// const aromasSugeridos = []
-// do{
-//     let aromaSugerido = prompt("Que 3 aromas te interesarian ver en nuestras velas: ");
-//     aromasSugeridos.push(aromaSugerido)
-// } while (aromasSugeridos.length<3)
-// console.log(aromasSugeridos)
-
-// let main = document.getElementById('main')
-// let divSugerencia = document.createElement('div')
-// main.append(divSugerencia)
-// divSugerencia.innerHTML = '<h3>Aromas sugeridos</h3><ul id="sugerenciaUsuario">Tus sugerencias quedaron registradas:</ul>'
-// for (const aroma of aromasSugeridos) {
-//     let liAroma = document.createElement("li")
-//     liAroma.innerHTML = `${aroma}`
-//     sugerenciaUsuario.append(liAroma)
-// }
-
-let divFiltroAroma = document.getElementById('divFiltroAroma')
-for (const vela of arrayStock) {
-    let containerInput = document.createElement("div")
-    containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`
-    divFiltroAroma.append(containerInput)
-}
-let containerInput = document.createElement("div")
-
-const carrito = []
-const valorInicial = 0
-let carritoLista = document.getElementById('carritoLista')
-let vaciarCarrito = document.getElementById('vaciarCarrito')
-vaciarCarrito.addEventListener('click',()=>{
-    carrito.splice(0,carrito.length),
-    console.log(carrito),
-    containerInput.innerHTML = `<p class="subtotalProductos">Has vaciado el carrito</p>`
-})
-
 function subtotal (vela){
     carrito.push(arrayStock[vela].precio);
     containerInput.innerHTML = `<p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
@@ -58,6 +23,25 @@ function subtotal (vela){
     carritoLista.append(containerInput)
     console.log(carrito)
 }
+
+let containerInput = document.createElement("div")
+let divFiltroAroma = document.getElementById('divFiltroAroma')
+for (const vela of arrayStock) {
+    let containerInput = document.createElement("div")
+    containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`
+    divFiltroAroma.append(containerInput)
+}
+
+const carrito = []
+const valorInicial = 0
+
+let carritoLista = document.getElementById('carritoLista')
+let vaciarCarrito = document.getElementById('vaciarCarrito')
+vaciarCarrito.addEventListener('click',()=>{
+    carrito.splice(0,carrito.length),
+    console.log(carrito),
+    containerInput.innerHTML = `<p class="subtotalProductos">Has vaciado el carrito</p>`
+})
 
 let compraApoel = document.getElementById('compraApoel')
 compraApoel.addEventListener('click',()=>subtotal(0))
@@ -70,12 +54,3 @@ compraCasteldefells.addEventListener('click',()=>subtotal(2))
 
 let compraDinamo = document.getElementById('compraDinamo')
 compraDinamo.addEventListener('click',()=>subtotal(3))
-
-
-// for (const e of carrito) {
-    // containerInput.innerHTML = `<div class="containerInput" id="containerInput"><p>Total: $${carrito.reduce((previo,actual) =>
-    // previo + actual,
-    // valorInicial)}</p></div>`
-    // divFiltroAroma.append(containerInput)
-// s
-
