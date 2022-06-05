@@ -38,47 +38,41 @@ for (const vela of arrayStock) {
     containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`
     divFiltroAroma.append(containerInput)
 }
+let containerInput = document.createElement("div")
 
 const carrito = []
 const valorInicial = 0
+let carritoLista = document.getElementById('carritoLista')
+let vaciarCarrito = document.getElementById('vaciarCarrito')
+vaciarCarrito.addEventListener('click',()=>{
+    carrito.splice(0,carrito.length),
+    console.log(carrito),
+    containerInput.innerHTML = `<p class="subtotalProductos">Has vaciado el carrito</p>`
+})
+
+function subtotal (vela){
+    carrito.push(arrayStock[vela].precio);
+    containerInput.innerHTML = `<p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
+        previo + actual,
+        valorInicial)}</p>`
+    carritoLista.append(containerInput)
+    console.log(carrito)
+}
 
 let compraApoel = document.getElementById('compraApoel')
-compraApoel.addEventListener('click',()=>{
-    carrito.push(arrayStock[0].precio);
-    containerInput.innerHTML = `<p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
-        previo + actual,
-        valorInicial)}</p>`
-        divFiltroAroma.append(containerInput)
-})
+compraApoel.addEventListener('click',()=>subtotal(0))
 
 let compraBurgio = document.getElementById('compraBurgio')
-compraBurgio.addEventListener('click',()=>{
-    carrito.push(arrayStock[1].precio)
-    containerInput.innerHTML = `<p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
-        previo + actual,
-        valorInicial)}</p>`
-        divFiltroAroma.append(containerInput)
-})
+compraBurgio.addEventListener('click',()=>subtotal(1))
+
 let compraCasteldefells = document.getElementById('compraCasteldefells')
-compraCasteldefells.addEventListener('click',()=>{
-    carrito.push(arrayStock[2].precio)
-    containerInput.innerHTML = `<p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
-        previo + actual,
-        valorInicial)}</p>`
-        divFiltroAroma.append(containerInput)
-})
+compraCasteldefells.addEventListener('click',()=>subtotal(2))
+
 let compraDinamo = document.getElementById('compraDinamo')
-compraDinamo.addEventListener('click',()=>{
-    carrito.push(arrayStock[3].precio)
-    containerInput.innerHTML = `<div class="prueba"><p class="subtotalProductos">Subtotal: $${carrito.reduce((previo,actual) =>
-        previo + actual,
-        valorInicial)}</p></div>`
-        divFiltroAroma.append(containerInput)
-})
+compraDinamo.addEventListener('click',()=>subtotal(3))
 
 
 // for (const e of carrito) {
-    let containerInput = document.createElement("div")
     // containerInput.innerHTML = `<div class="containerInput" id="containerInput"><p>Total: $${carrito.reduce((previo,actual) =>
     // previo + actual,
     // valorInicial)}</p></div>`
