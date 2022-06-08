@@ -142,6 +142,12 @@ aside{
   border: none;
   margin: auto;
 }
+.cantidadProductos{
+  padding: 0.5rem;
+  background-color: burlywood;
+  color: black;
+  overflow: hidden;
+}
 .subtotalProductos{
   text-align: center;
   background-color: #AD8B73;
@@ -170,6 +176,7 @@ main{
 }
 .card{
   margin: 1rem auto;
+  width: 18rem;
 }
 .card-compra{
   margin: 0;
@@ -177,7 +184,7 @@ main{
   flex-direction: row;
 }
 .btnCompra{
-  width: 31%;
+  width: 40%;
   background-color: #AD8B73;
   border: none;
   color: #E3CAA5;

@@ -5,7 +5,7 @@ let formulario = document.getElementById('formulario')
 let contador = 0
 
 formulario.addEventListener("submit",(e)=>{
-    if(!textArea.value||!inputNombre.value||!inputMail.value){
+    if(!textArea.value||!inputNombre.value||!inputMail.value||textArea.value.trim||inputNombre.value.trim){
         e.preventDefault()
         contador += 1
         if(contador<2){
