@@ -9,55 +9,26 @@ class Producto {
   }
 }
 const arrayStock = [
-  new Producto(
-    1,
-    'Vela Apoel',
-    '500g',
-    'Coconut',
-    670,
-    'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/218fcfac-ceef-4def-8741-d89354205f28-2548678907693e45d716442702125362-640-0.jpeg'
-  ),
-  new Producto(
-    2,
-    'Vela Burgio',
-    '350g',
-    'Lemon Grass',
-    900,
-    'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/b377a23a-e5b6-40cc-9f05-fb4ba9a34e1d-494f38c12054145f3116346029035665-640-0.jpeg'
-  ),
-  new Producto(
-    3,
-    'Vela Casteldefells',
-    '475g',
-    'Vainilla',
-    1499,
-    'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/8e7a69cb-8b9d-4cdf-8d2d-97ba44dcdfd3-012cc258c7d14151f316442582167641-1024-1024.jpeg'
-  ),
-  new Producto(
-    4,
-    'Vela Dinamo',
-    '270g',
-    'Chocolate',
-    999,
-    'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/fc271cb4-6163-418f-b87c-b52b0279d715_nube-764eb6126f8a181d3616065106131993-640-0.jpg'
-  ),
+  new Producto(1,'Vela Apoel','500g','Coconut',670,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/218fcfac-ceef-4def-8741-d89354205f28-2548678907693e45d716442702125362-640-0.jpeg'),
+  new Producto(2,'Vela Burgio','350g','Lemon Grass',900,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/b377a23a-e5b6-40cc-9f05-fb4ba9a34e1d-494f38c12054145f3116346029035665-640-0.jpeg'),
+  new Producto(3,'Vela Casteldefells','475g','Vainilla',1499,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/8e7a69cb-8b9d-4cdf-8d2d-97ba44dcdfd3-012cc258c7d14151f316442582167641-1024-1024.jpeg'),
+  new Producto(4,'Vela Dinamo','270g','Chocolate',999,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/fc271cb4-6163-418f-b87c-b52b0279d715_nube-764eb6126f8a181d3616065106131993-640-0.jpg'),
 ];
-//DOM
+// Variables
 let carritoLocalStorage
-const carrito = [];
-const valorInicial = 0;
+let subtotalMostrado = []
+let contador = 0
+let subtotalGuardadoLS = localStorage.getItem('carritoValor')
+let carrito = []
 //FUNCIONES
 function subtotal(vela) {
-  carrito.push(arrayStock[vela].precio);
-  containerInput.innerHTML = `<p class="subtotalProductos">Subtotal: $${carrito.reduce(
-    (previo, actual) => previo + actual,
-    valorInicial
-  )}</p>`;
-  let subtotalLS = carrito.reduce(
-    (previo, actual) => previo + actual,
-    valorInicial
-  )
-  if(carrito==''){
+  carrito.push(arrayStock[vela]);
+  subtotalMostrado.push(arrayStock[vela].precio);
+  subtotalProductos.innerText = `Subtotal: $${subtotalMostrado.reduce((previo, actual) => 
+      previo + actual,+subtotalGuardadoLS
+  )}`;
+  let subtotalLS = subtotalMostrado.reduce((previo, actual) => previo + actual, +subtotalGuardadoLS)
+  if(subtotalMostrado==''){
     console.log('no hay datos')
   } else {
     carritoLocalStorage = localStorage.setItem('carritoValor', subtotalLS);
@@ -65,6 +36,8 @@ function subtotal(vela) {
     console.log(subtotalGuardadoLS)
   }
 }
+
+// CARGA AUTOMATICA DE CARDS Y CARRITO
 function cargaProductos() {
   arrayStock.forEach((vela) => {
     // Estructura Card
@@ -107,11 +80,22 @@ function cargaProductos() {
     cardCompra.appendChild(botonCompra);
     main.appendChild(card);
     // Lista de cada producto
-    let liProducto = document.createElement('li');
-    liProducto.textContent = `${vela.nombre} ${valorInicial}`;
+      let liProducto = document.createElement('li');
+    liProducto.textContent = `${vela.nombre} ${contador}`;
     liProducto.classList.add('cantidadProductos');
     divCarrito.append(containerInput);
     carritoLista.appendChild(liProducto);
+  });
+  if(!subtotalGuardadoLS){
+      subtotalProductos.innerText = `Subtotal: $0`
+      } else {
+      subtotalProductos.innerText = `Subtotal: $${subtotalGuardadoLS}`
+  }
+  divCarrito.append(vaciarCarrito);
+  vaciarCarrito.addEventListener('click', () => {
+    subtotalMostrado.splice(0, subtotalMostrado.length),
+    (subtotalProductos.innerText = `Has vaciado el carrito`);
+    localStorage.clear()
   });
 }
 // GetElement
@@ -119,6 +103,7 @@ let main = document.getElementById('main');
 let divCarrito = document.getElementById('divCarrito');
 let divFiltroAroma = document.getElementById('divFiltroAroma');
 let carritoLista = document.getElementById('carritoLista');
+let subtotalProductos = document.getElementById('subtotalProductos')
 let vaciarCarrito = document.getElementById('vaciarCarrito');
 // CreateElement
 let containerInput = document.createElement('div');
@@ -128,13 +113,5 @@ for (const vela of arrayStock) {
   containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`;
   divFiltroAroma.append(containerInput);
 }
-
-divCarrito.append(vaciarCarrito);
-vaciarCarrito.addEventListener('click', () => {
-  carrito.splice(0, carrito.length),
-    console.log(carrito),
-    (containerInput.innerHTML = `<p class="subtotalProductos">Has vaciado el carrito</p>`);
-  localStorage.clear()
-});
 
 cargaProductos();
