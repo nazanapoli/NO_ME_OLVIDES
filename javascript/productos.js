@@ -1,13 +1,5 @@
-class Producto {
-  constructor(id, nombre, peso, aroma, precio, imagen) {
-    this.id = id;
-    this.nombre = nombre.toUpperCase();
-    this.peso = peso;
-    this.aroma = aroma;
-    this.precio = precio;
-    this.imagen = imagen;
-  }
-}
+import Producto from './classVelas.js'
+
 const arrayStock = [
   new Producto(1,'Vela Apoel','500g','Coconut',670,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/218fcfac-ceef-4def-8741-d89354205f28-2548678907693e45d716442702125362-640-0.jpeg'),
   new Producto(2,'Vela Burgio','350g','Lemon Grass',900,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/b377a23a-e5b6-40cc-9f05-fb4ba9a34e1d-494f38c12054145f3116346029035665-640-0.jpeg'),
@@ -113,5 +105,4 @@ for (const vela of arrayStock) {
   containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`;
   divFiltroAroma.append(containerInput);
 }
-
-cargaProductos();
+cargaProductos()

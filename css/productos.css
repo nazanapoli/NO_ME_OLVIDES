@@ -159,8 +159,10 @@ aside{
   width: 200px;
   margin: 1rem auto;
   background-color: silver;
-  padding: 1rem 0;
-  border-radius: 5px
+  padding: 1rem 0 0 0;
+  border-radius: 5px;
+  overflow: hidden;
+  height: fit-content;
 }
 #vaciarCarrito{
   width: 100%;
@@ -259,8 +261,8 @@ footer{
   }
   /* PRODCUTOS */
   .productos{
-    display: grid;
-    grid-template-columns:100%;
+    display: flex;
+    flex-direction: column-reverse;
   }
   main{
     display: flex;
@@ -268,6 +270,9 @@ footer{
     width: auto;
   }
   aside{
+    display: flex;
+  }
+  .divAside{
     display: none;
   }
   .card{
