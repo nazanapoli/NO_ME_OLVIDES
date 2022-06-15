@@ -1,5 +1,4 @@
 import Producto from './classVelas.js'
-
 const arrayStock = [
   new Producto(1,'Vela Apoel','500g','Coconut',670,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/218fcfac-ceef-4def-8741-d89354205f28-2548678907693e45d716442702125362-640-0.jpeg'),
   new Producto(2,'Vela Burgio','350g','Lemon Grass',900,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/b377a23a-e5b6-40cc-9f05-fb4ba9a34e1d-494f38c12054145f3116346029035665-640-0.jpeg'),
@@ -9,26 +8,39 @@ const arrayStock = [
 // Variables
 let carritoLocalStorage
 let subtotalMostrado = []
-let contador = 0
 let subtotalGuardadoLS = localStorage.getItem('carritoValor')
 let carrito = []
+// GetElement
+let main = document.getElementById('main');
+let divCarrito = document.getElementById('divCarrito');
+let divFiltroAroma = document.getElementById('divFiltroAroma');
+let carritoLista = document.getElementById('carritoLista');
+let subtotalProductos = document.getElementById('subtotalProductos')
+let vaciarCarrito = document.getElementById('vaciarCarrito');
+const card = document.createElement('div');
+let busqueda = document.getElementById('busqueda');
+let lupa = document.getElementById('lupa');
+// CreateElement
+let containerInput = document.createElement('div');
 //FUNCIONES
+function tareaConReduce (){
+  return subtotalMostrado.reduce((previo, actual) => previo + actual, +subtotalGuardadoLS)
+}
 function subtotal(vela) {
   carrito.push(arrayStock[vela]);
   subtotalMostrado.push(arrayStock[vela].precio);
-  subtotalProductos.innerText = `Subtotal: $${subtotalMostrado.reduce((previo, actual) => 
-      previo + actual,+subtotalGuardadoLS
-  )}`;
-  let subtotalLS = subtotalMostrado.reduce((previo, actual) => previo + actual, +subtotalGuardadoLS)
-  if(subtotalMostrado==''){
-    console.log('no hay datos')
-  } else {
+  subtotalProductos.innerText = `Subtotal: $${tareaConReduce()}`;
+  let subtotalLS = tareaConReduce()
+  let liProducto = document.createElement('li');
+  liProducto.textContent = `${arrayStock[vela].nombre}`;
+  liProducto.classList.add('cantidadProductos');
+  divCarrito.append(containerInput);
+  carritoLista.appendChild(liProducto);
+  if(subtotalMostrado!==''){
     carritoLocalStorage = localStorage.setItem('carritoValor', subtotalLS);
     let subtotalGuardadoLS = localStorage.getItem('carritoValor')
-    console.log(subtotalGuardadoLS)
   }
 }
-
 // CARGA AUTOMATICA DE CARDS Y CARRITO
 function cargaProductos() {
   arrayStock.forEach((vela) => {
@@ -61,7 +73,7 @@ function cargaProductos() {
     const botonCompra = document.createElement('button');
     botonCompra.classList.add('btnCompra');
     botonCompra.textContent = '+';
-    botonCompra.addEventListener('click', () => subtotal(vela.id - 1));
+    botonCompra.addEventListener('click', () => subtotal(vela.id-1));
     // Interaccion con DOM
     card.appendChild(imagenProducto);
     card.appendChild(cardBody);
@@ -71,38 +83,32 @@ function cargaProductos() {
     cardCompra.appendChild(cardPrecio);
     cardCompra.appendChild(botonCompra);
     main.appendChild(card);
-    // Lista de cada producto
-      let liProducto = document.createElement('li');
-    liProducto.textContent = `${vela.nombre} ${contador}`;
-    liProducto.classList.add('cantidadProductos');
-    divCarrito.append(containerInput);
-    carritoLista.appendChild(liProducto);
   });
-  if(!subtotalGuardadoLS){
-      subtotalProductos.innerText = `Subtotal: $0`
-      } else {
-      subtotalProductos.innerText = `Subtotal: $${subtotalGuardadoLS}`
-  }
+  (!subtotalGuardadoLS)?subtotalProductos.innerText=`Subtotal: $0`:subtotalProductos.innerText =`Subtotal: $${subtotalGuardadoLS}` //valor que aparece en 'subtotal' (carrito)
   divCarrito.append(vaciarCarrito);
   vaciarCarrito.addEventListener('click', () => {
-    subtotalMostrado.splice(0, subtotalMostrado.length),
+    subtotalMostrado.splice(0, subtotalMostrado.length);
     (subtotalProductos.innerText = `Has vaciado el carrito`);
+    carritoLista.innerHTML=''
     localStorage.clear()
   });
 }
-// GetElement
-let main = document.getElementById('main');
-let divCarrito = document.getElementById('divCarrito');
-let divFiltroAroma = document.getElementById('divFiltroAroma');
-let carritoLista = document.getElementById('carritoLista');
-let subtotalProductos = document.getElementById('subtotalProductos')
-let vaciarCarrito = document.getElementById('vaciarCarrito');
-// CreateElement
-let containerInput = document.createElement('div');
-
 for (const vela of arrayStock) {
   let containerInput = document.createElement('div');
   containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`;
   divFiltroAroma.append(containerInput);
 }
 cargaProductos()
+// const filtroPorBusqueda = () => {
+//   const busquedaUsuario = busqueda.value.toUpperCase()
+//   for (const vela of arrayStock) {
+//     let productoExistente = vela.nombre
+//     if(productoExistente.includes(busquedaUsuario) == true){
+//       main.innerHTML += `<div> ${vela.nombre}</div>`
+//     } else {
+//       main.innerHTML = `Producto no encontrado`
+//     }
+//   }
+// }
+// lupa.addEventListener('click',filtroPorBusqueda)
+// busqueda.addEventListener('keypress',filtroPorBusqueda)

@@ -5,13 +5,13 @@ let formulario = document.getElementById('formulario')
 let contador = 0
 
 formulario.addEventListener("submit",(e)=>{
-    if(!textArea.value||!inputNombre.value||!inputMail.value||textArea.value.trim||inputNombre.value.trim){
+    if(!inputNombre.value||!inputMail.value||!textArea.value.trim()||!inputNombre.value.trim()){
         e.preventDefault()
-        contador += 1
+        contador++
         if(contador<2){
-            let completarCampos=document.createElement('p')
+            let completarCampos=document.createElement('p');
             completarCampos.innerHTML='<p class="mensajeCompletar">¡Debes completar todos los campos!</p>';
-            formulario.append(completarCampos)
+            formulario.append(completarCampos);
         }
     } else {
         alert('Tus datos fueron enviados correctamente')
