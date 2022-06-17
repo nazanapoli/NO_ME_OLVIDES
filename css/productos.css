@@ -82,7 +82,7 @@ header{
 /* PRODUCTOS */
 aside{
   display: grid;
-  grid-template-rows: 1fr 1fr;
+
 }
 .productos{
   max-width: 1000px;
@@ -176,6 +176,8 @@ main{
   display: grid;
   grid-template-columns: 50% 50%;
   width: 100%;
+  margin: 0 auto;
+  height: fit-content;
 }
 .card{
   margin: 1rem auto;

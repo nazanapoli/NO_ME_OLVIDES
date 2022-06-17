@@ -5,6 +5,15 @@ const arrayStock = [
   new Producto(3,'Vela Casteldefells','475g','Vainilla',1499,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/8e7a69cb-8b9d-4cdf-8d2d-97ba44dcdfd3-012cc258c7d14151f316442582167641-1024-1024.jpeg'),
   new Producto(4,'Vela Dinamo','270g','Chocolate',999,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/fc271cb4-6163-418f-b87c-b52b0279d715_nube-764eb6126f8a181d3616065106131993-640-0.jpg'),
 ];
+// Desestructuraciones
+const nombreProducto = (productoADesestructurar) => {
+  const {nombre} = productoADesestructurar
+  return nombre
+}
+const precioProducto = (productoADesestructurar) => {
+  const {precio} = productoADesestructurar
+  return precio
+}
 // Variables
 let carritoLocalStorage
 let subtotalMostrado = []
@@ -23,16 +32,33 @@ let lupa = document.getElementById('lupa');
 // CreateElement
 let containerInput = document.createElement('div');
 //FUNCIONES
+// function carritoLista (vela){
+//   let liProducto = document.createElement('li');
+//   liProducto.textContent = `${vela.nombre}`;
+//   liProducto.classList.add('cantidadProductos');
+// }
 function tareaConReduce (){
   return subtotalMostrado.reduce((previo, actual) => previo + actual, +subtotalGuardadoLS)
 }
 function subtotal(vela) {
-  carrito.push(arrayStock[vela]);
-  subtotalMostrado.push(arrayStock[vela].precio);
+
+  // //funcion
+  // const indexVelaEnCarrito = carrito.findIndex((v)=>{return v.item.nombre==arrayStock[vela].nombre})
+  // console.log(indexVelaEnCarrito)
+  // if (indexVelaEnCarrito===-1){
+  //   carrito.push({cantidad: 1,item: arrayStock[vela]});
+  // } else {
+  //   carrito[indexVelaEnCarrito].cantidad++
+  // }
+  // // ul='' y forEach con paramet
+
+
+  localStorage.setItem('carritoAgregado',JSON.stringify({carrito}))
+  subtotalMostrado.push(precioProducto(arrayStock[vela]));
   subtotalProductos.innerText = `Subtotal: $${tareaConReduce()}`;
   let subtotalLS = tareaConReduce()
   let liProducto = document.createElement('li');
-  liProducto.textContent = `${arrayStock[vela].nombre}`;
+  liProducto.textContent = `${nombreProducto(arrayStock[vela])}`;
   liProducto.classList.add('cantidadProductos');
   divCarrito.append(containerInput);
   carritoLista.appendChild(liProducto);
@@ -42,8 +68,9 @@ function subtotal(vela) {
   }
 }
 // CARGA AUTOMATICA DE CARDS Y CARRITO
-function cargaProductos() {
-  arrayStock.forEach((vela) => {
+function cargaProductos(arFiltrado) {
+  main.innerHTML = ''
+  arFiltrado.forEach((vela) => {
     // Estructura Card
     const card = document.createElement('div');
     card.classList.add('card');
@@ -51,13 +78,14 @@ function cargaProductos() {
     const imagenProducto = document.createElement('img');
     imagenProducto.classList.add('card-img-top');
     imagenProducto.setAttribute('src', vela.imagen);
+    imagenProducto.setAttribute('alt', nombreProducto(vela));
     // Body
     const cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
     // Titulo
     const title = document.createElement('h3');
     title.classList.add('card-title');
-    title.textContent = vela.nombre;
+    title.textContent = `${nombreProducto(vela)}`;
     // Texto
     const textoCard = document.createElement('p');
     textoCard.classList.add('card-text');
@@ -68,7 +96,7 @@ function cargaProductos() {
     // Precio
     const cardPrecio = document.createElement('p');
     cardPrecio.classList.add('precio');
-    cardPrecio.textContent = `$${vela.precio}`;
+    cardPrecio.textContent = `$${precioProducto(vela)}`;
     // Boton
     const botonCompra = document.createElement('button');
     botonCompra.classList.add('btnCompra');
@@ -89,8 +117,9 @@ function cargaProductos() {
   vaciarCarrito.addEventListener('click', () => {
     subtotalMostrado.splice(0, subtotalMostrado.length);
     (subtotalProductos.innerText = `Has vaciado el carrito`);
-    carritoLista.innerHTML=''
-    localStorage.clear()
+    carritoLista.innerHTML='';
+    subtotalGuardadoLS = 0;
+    localStorage.clear();
   });
 }
 for (const vela of arrayStock) {
@@ -98,17 +127,20 @@ for (const vela of arrayStock) {
   containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`;
   divFiltroAroma.append(containerInput);
 }
-cargaProductos()
-// const filtroPorBusqueda = () => {
-//   const busquedaUsuario = busqueda.value.toUpperCase()
-//   for (const vela of arrayStock) {
-//     let productoExistente = vela.nombre
-//     if(productoExistente.includes(busquedaUsuario) == true){
-//       main.innerHTML += `<div> ${vela.nombre}</div>`
-//     } else {
-//       main.innerHTML = `Producto no encontrado`
-//     }
-//   }
-// }
-// lupa.addEventListener('click',filtroPorBusqueda)
-// busqueda.addEventListener('keypress',filtroPorBusqueda)
+cargaProductos(arrayStock)
+
+const filtroPorBusqueda = () => {
+  const busquedaUsuario = busqueda.value.toUpperCase()
+  const arFiltrado = arrayStock.filter((vela)=>{
+    return nombreProducto(vela).includes(busquedaUsuario) == true
+  })
+    if (arFiltrado.length==0){
+      main.innerHTML = `Producto no encontrado`
+    } else {
+      cargaProductos(arFiltrado)
+    }
+}
+lupa.addEventListener('click',filtroPorBusqueda)
+busqueda.addEventListener('keyup',()=>{
+  (busqueda.value=='')?cargaProductos(arrayStock):filtroPorBusqueda()
+})
