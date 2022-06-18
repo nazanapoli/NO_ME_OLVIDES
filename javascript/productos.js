@@ -32,7 +32,7 @@ let lupa = document.getElementById('lupa');
 // CreateElement
 let containerInput = document.createElement('div');
 //FUNCIONES
-// function carritoLista (vela){
+// function listaDeProductosAgregados (vela){
 //   let liProducto = document.createElement('li');
 //   liProducto.textContent = `${vela.nombre}`;
 //   liProducto.classList.add('cantidadProductos');
@@ -42,15 +42,17 @@ function tareaConReduce (){
 }
 function subtotal(vela) {
 
-  // //funcion
-  // const indexVelaEnCarrito = carrito.findIndex((v)=>{return v.item.nombre==arrayStock[vela].nombre})
-  // console.log(indexVelaEnCarrito)
-  // if (indexVelaEnCarrito===-1){
-  //   carrito.push({cantidad: 1,item: arrayStock[vela]});
-  // } else {
-  //   carrito[indexVelaEnCarrito].cantidad++
-  // }
-  // // ul='' y forEach con paramet
+  //funcion
+  const indexVelaEnCarrito = carrito.findIndex((v)=>{return v.item.nombre==arrayStock[vela].nombre})
+  console.log(indexVelaEnCarrito)
+  if (indexVelaEnCarrito===-1){
+    carrito.push({cantidad: 1,item: arrayStock[vela]});
+    console.log(carrito)
+  } else {
+    carrito[indexVelaEnCarrito].cantidad++
+    console.log(carrito)
+  }
+  // ul='' y forEach con paramet
 
 
   localStorage.setItem('carritoAgregado',JSON.stringify({carrito}))
