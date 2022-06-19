@@ -5,7 +5,6 @@ class registroUsuario {
     }
 }
 const validacionesLogin = (contadorP,mensaje, formulario) => {
-    contadorP ++
     if(contadorP<2){
         let datosIncorrectos=document.createElement('p');
         datosIncorrectos.innerText=mensaje;
@@ -29,11 +28,13 @@ let usuarioSesion = document.getElementById('usuarioSesion')
 let usuarioPassword = document.getElementById('usuarioPassword')
 
 
-btnRegistrarse.addEventListener('click',()=>{
-    if(!inputNombre.value||!inputCorreo.value||!inputPass.value||!inputNombre.value.trim()||!inputCorreo.value.trim()||!inputPass.value.trim()){
+btnRegistrarse.addEventListener('click',(e)=>{
+    if(!inputNombre.value||!inputCorreo.value||!inputPass.value||!inputNombre.value.trim()||!inputCorreo.value.trim()||!inputPass.value.trim()||inputCorreo.value.includes('@')==false){
+        e.preventDefault()
+        contadorRegistro++
         validacionesLogin(contadorRegistro,'Debes rellenar todos los campos',formularioRegistro)
     } else {
-            //toma los valores de los input
+    //toma los valores de los input
     localStorage.setItem('nombre',inputNombre.value)
     localStorage.setItem('correo',inputCorreo.value)
     localStorage.setItem('pass',inputPass.value)
@@ -56,12 +57,14 @@ btnRegistrarse.addEventListener('click',()=>{
 // validaciones e inicio de sesion
 btnSesion.addEventListener('click',()=>{
     if(!usuarioSesion.value||!usuarioPassword.value||!usuarioSesion.value.trim()||!usuarioPassword.value.trim()){
+        contadorSesion++
         validacionesLogin(contadorSesion,'¡Usuario o contraseña incorrecta!',formularioSesion)
     } else {
         usuariosRegistrados.forEach(usuario => {
             if(usuario.usuario===usuarioSesion.value&&usuario.password===usuarioPassword.value){
                 window.location.href='./index.html'
             } else {
+                contadorSesion++
                 validacionesLogin(contadorSesion,'¡Usuario o contraseña incorrecta!',formularioSesion)
             }
     })

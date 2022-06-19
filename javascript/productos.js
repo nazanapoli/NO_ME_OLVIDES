@@ -14,6 +14,10 @@ const precioProducto = (productoADesestructurar) => {
   const {precio} = productoADesestructurar
   return precio
 }
+const aromaProducto = (productoADesestructurar) => {
+  const {aroma} = productoADesestructurar
+  return aroma
+}
 // Variables
 let carritoLocalStorage
 let subtotalMostrado = []
@@ -31,39 +35,34 @@ let busqueda = document.getElementById('busqueda');
 let lupa = document.getElementById('lupa');
 // CreateElement
 let containerInput = document.createElement('div');
-//FUNCIONES
-// function listaDeProductosAgregados (vela){
-//   let liProducto = document.createElement('li');
-//   liProducto.textContent = `${vela.nombre}`;
-//   liProducto.classList.add('cantidadProductos');
-// }
+//Funciones
 function tareaConReduce (){
   return subtotalMostrado.reduce((previo, actual) => previo + actual, +subtotalGuardadoLS)
 }
-function subtotal(vela) {
-
-  //funcion
-  const indexVelaEnCarrito = carrito.findIndex((v)=>{return v.item.nombre==arrayStock[vela].nombre})
-  console.log(indexVelaEnCarrito)
-  if (indexVelaEnCarrito===-1){
-    carrito.push({cantidad: 1,item: arrayStock[vela]});
-    console.log(carrito)
-  } else {
-    carrito[indexVelaEnCarrito].cantidad++
-    console.log(carrito)
-  }
-  // ul='' y forEach con paramet
-
-
+//Muestra en el carrito la cantidad de productos agregados
+function mostrarLiProductos (arrayConProductos){
+  carritoLista.innerText=''
+  arrayConProductos.forEach(element => {
+    let liProducto = document.createElement('li');
+    liProducto.textContent = `${element.item.nombre} x${element.cantidad}uni.`;
+    liProducto.classList.add('cantidadProductos');
+    carritoLista.appendChild(liProducto);
+  });
   localStorage.setItem('carritoAgregado',JSON.stringify({carrito}))
+}
+//Suma a 'carrito' los productos, si ya habia anteriormente uno solo le suma la cantidad
+function pushProductosACarrito(vela){
+  const indexVelaEnCarrito = carrito.findIndex((v)=>{return v.item.nombre==arrayStock[vela].nombre});
+  (indexVelaEnCarrito===-1)?carrito.push({cantidad: 1,item: arrayStock[vela]}):carrito[indexVelaEnCarrito].cantidad++
+}
+function subtotal(vela) {
+  pushProductosACarrito(vela)
+  mostrarLiProductos(carrito)
+  //Obtencion de subtotal y agrega al LocalStorage
   subtotalMostrado.push(precioProducto(arrayStock[vela]));
   subtotalProductos.innerText = `Subtotal: $${tareaConReduce()}`;
   let subtotalLS = tareaConReduce()
-  let liProducto = document.createElement('li');
-  liProducto.textContent = `${nombreProducto(arrayStock[vela])}`;
-  liProducto.classList.add('cantidadProductos');
   divCarrito.append(containerInput);
-  carritoLista.appendChild(liProducto);
   if(subtotalMostrado!==''){
     carritoLocalStorage = localStorage.setItem('carritoValor', subtotalLS);
     let subtotalGuardadoLS = localStorage.getItem('carritoValor')
@@ -121,9 +120,10 @@ function cargaProductos(arFiltrado) {
     (subtotalProductos.innerText = `Has vaciado el carrito`);
     carritoLista.innerHTML='';
     subtotalGuardadoLS = 0;
-    localStorage.clear();
+    localStorage.removeItem('carritoValor');
   });
 }
+//Filtro aromas
 for (const vela of arrayStock) {
   let containerInput = document.createElement('div');
   containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" name="my-input" id="no"><label for="no">${vela.aroma}</label></div>`;
@@ -135,12 +135,8 @@ const filtroPorBusqueda = () => {
   const busquedaUsuario = busqueda.value.toUpperCase()
   const arFiltrado = arrayStock.filter((vela)=>{
     return nombreProducto(vela).includes(busquedaUsuario) == true
-  })
-    if (arFiltrado.length==0){
-      main.innerHTML = `Producto no encontrado`
-    } else {
-      cargaProductos(arFiltrado)
-    }
+  });
+  (arFiltrado.length==0)?main.innerHTML = `Producto no encontrado`:cargaProductos(arFiltrado)
 }
 lupa.addEventListener('click',filtroPorBusqueda)
 busqueda.addEventListener('keyup',()=>{
