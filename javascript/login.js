@@ -34,25 +34,30 @@ btnRegistrarse.addEventListener('click',(e)=>{
         contadorRegistro++
         validacionesLogin(contadorRegistro,'Debes rellenar todos los campos',formularioRegistro)
     } else {
-    //toma los valores de los input
-    localStorage.setItem('nombre',inputNombre.value)
-    localStorage.setItem('correo',inputCorreo.value)
-    localStorage.setItem('pass',inputPass.value)
-    //con los valores guardados un crea usuario
-    let caracteresNombre = localStorage.getItem('nombre').substring(0,3)
-    let caracteresCorreo = localStorage.getItem('correo').substring(0,4)
-    let usuario =`${caracteresCorreo}${Math.floor((Math.random()*(98-1))+1)}${caracteresNombre}`
-    let password = localStorage.getItem('pass')
-    //setea usuario y muestra en pantalla
-    localStorage.setItem('usuario',usuario)
-    Swal.fire(
-        'Usuario registrado',
-        `Tu usuario es: ${localStorage.getItem('usuario')}`,
-        'success',
-      )
-    usuariosRegistrados.push(new registroUsuario (usuario,password))
-    localStorage.setItem('BaseUsuarios',JSON.stringify(usuariosRegistrados))
-    }
+        e.preventDefault()
+        //toma los valores de los input
+        localStorage.setItem('nombre',inputNombre.value)
+        localStorage.setItem('correo',inputCorreo.value)
+        localStorage.setItem('pass',inputPass.value)
+        //con los valores guardados un crea usuario
+        let caracteresNombre = localStorage.getItem('nombre').substring(0,3)
+        let caracteresCorreo = localStorage.getItem('correo').substring(0,4)
+        let usuario =`${caracteresCorreo}${Math.floor((Math.random()*(98-1))+1)}${caracteresNombre}`
+        let password = localStorage.getItem('pass')
+        //setea usuario y muestra en pantalla
+        localStorage.setItem('usuario',usuario)
+        usuariosRegistrados.push(new registroUsuario (usuario,password))
+        localStorage.setItem('BaseUsuarios',JSON.stringify(usuariosRegistrados))
+        Swal.fire({       
+            confirmButtonColor: "#AD8B73",
+            title:'Usuario registrado',
+            text:`Tu usuario es: ${localStorage.getItem('usuario')}`,
+            icon:'success',
+            })
+        }
+        inputCorreo.value=''
+        inputNombre.value=''
+        inputPass.value=''
 })
 // validaciones e inicio de sesion
 btnSesion.addEventListener('click',()=>{
