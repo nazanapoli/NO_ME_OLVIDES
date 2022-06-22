@@ -113,7 +113,8 @@ function cargaProductos(arFiltrado) {
     cardCompra.appendChild(botonCompra);
     main.appendChild(card);
   });
-  (!subtotalGuardadoLS)?subtotalProductos.innerText=`Subtotal: $0`:subtotalProductos.innerText =`Subtotal: $${subtotalGuardadoLS}` //valor que aparece en 'subtotal' (carrito)
+  subtotalProductos.innerText = (!subtotalGuardadoLS) ? `Subtotal: $0`:`Subtotal: $${subtotalGuardadoLS}`
+ //valor que aparece en 'subtotal' (carrito)
   divCarrito.append(vaciarCarrito);
   vaciarCarrito.addEventListener('click', () => {
     subtotalMostrado.splice(0, subtotalMostrado.length);
@@ -144,11 +145,13 @@ busqueda.addEventListener('keyup',()=>{
   (busqueda.value=='')?cargaProductos(arrayStock):filtroPorBusqueda()
 })
 //Filtro Por Precio
+//getElement
 let primerCheckboxPrecio = document.getElementById('menosDeMil')
 let segundoCheckboxPrecio = document.getElementById('EntreXeY')
 let tercerCheckboxPrecio = document.getElementById('desde')
 
 //1check
+const precioSeleccionadoUsuario1 = primerCheckboxPrecio.value
 primerCheckboxPrecio.addEventListener('change',primerCheckFiltro,false)
 function primerCheckFiltro (){
 const filtroPorPrecio = () => {
@@ -188,15 +191,15 @@ filtroPorPrecio(arrayStock)
 }
 
 //Intento de filtrar por precio con parametros
-function nombreGlobal (p1){
-  const filtroPorPrecio = () => {
-    const arFiltradoPrecio = arrayStock.filter((vela)=>{
-      return vela.precio >= p1.value
-    });
-      cargaProductos(arFiltradoPrecio)
-  }
-  filtroPorPrecio(arrayStock)
-  }
+// function nombreGlobal (p1){
+//   const filtroPorPrecio = () => {
+//     const arFiltradoPrecio = arrayStock.filter((vela)=>{
+//       return vela.precio >= p1.value
+//     });
+//       cargaProductos(arFiltradoPrecio)
+//   }
+//   filtroPorPrecio(arrayStock)
+// }
 
 
 //filtro por aroma
@@ -206,7 +209,6 @@ let aroma3 = document.getElementById('aroma3')
 let aroma4 = document.getElementById('aroma4')
 
 const filtroPorAroma = (aroma) => {
-
   const arFiltradoAroma = arrayStock.filter((vela)=>{
     return vela.aroma.includes(aroma.value) == true
   });

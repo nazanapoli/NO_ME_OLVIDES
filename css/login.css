@@ -4,14 +4,14 @@
     font-family: 'Varela Round', sans-serif;
     font-weight: 400; }
   body{
-    background-color: antiquewhite;
+    background-color: #E3CAA5;
   }
   div{
     margin: 0;
   }
   a{
     text-decoration: none;
-    color: #E3CAA5;
+    color: antiquewhite;
   }
   a:hover{
     color: #e1d2bcb7;
@@ -26,7 +26,7 @@
   h5,
   h6{
     font-weight: 600;
-    color: #E3CAA5;
+    color: antiquewhite; 
   }
   ul{
     list-style: none;
@@ -34,7 +34,7 @@
     padding: 0;
   }
   li{
-    color: #E3CAA5;
+    color: antiquewhite;
   }
   .marginAuto{
     margin: auto;
@@ -102,17 +102,21 @@
 }
 .marginInput{
     margin: 0 2rem;
+    border: none;
+    border-radius: 5px;
+    border-bottom: #AD8B73 solid 3px;
+    background-color: floralwhite;
 }
 .btn-registro,
 .btn-sesion{
     margin: 1rem 2rem;
     background-color: #AD8B73;
-    color: #E3CAA5;
+    color: antiquewhite;
     border: none;
     border-radius: 5px;
 }
 .main h3{
-    color: #E3CAA5;
+    color: antiquewhite;
     background-color: #AD8B73;
 }
 .mensajeIncorrecto{
@@ -161,8 +165,8 @@ footer{
       font-size: 24px;
     }
     .dropdown-item{
-      color: #E3CAA5;
-      border-bottom: #E3CAA5 2px solid;
+      color: #faebd7;
+      border-bottom: #faebd7 2px solid;
       font-size: 1.5rem;
     }
     .dropdown-item:hover{

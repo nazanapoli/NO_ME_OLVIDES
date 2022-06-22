@@ -2,6 +2,7 @@ let inputNombre = document.getElementById('inputNombre')
 let inputMail = document.getElementById('inputMail')
 let textArea = document.getElementById('textArea')
 let formulario = document.getElementById('formulario')
+let botonEnviar = document.getElementById('btnEnviar')
 let contador = 0
 
 formulario.addEventListener("submit",(e)=>{

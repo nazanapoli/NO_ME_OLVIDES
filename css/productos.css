@@ -11,7 +11,7 @@ div{
 }
 a{
   text-decoration: none;
-  color: #E3CAA5;
+  color: antiquewhite;
 }
 a:hover{
   color: #e1d2bcb7;
@@ -26,7 +26,7 @@ h4{
 h5,
 h6{
   font-weight: 600;
-  color: #E3CAA5;
+  color: antiquewhite;
 }
 ul{
   list-style: none;
@@ -34,7 +34,7 @@ ul{
   padding: 0;
 }
 li{
-  color: #E3CAA5;
+  color: antiquewhite;
 }
 .marginAuto{
   margin: auto;
@@ -67,7 +67,7 @@ header{
 }
 .inputHeader{
   border: none;
-  border-bottom: #E3CAA5 3px solid;
+  border-bottom: #faebd7 3px solid;
   border-radius: 5px;
   background-color: #AD8B73;
   width: 250px;
@@ -245,13 +245,13 @@ footer{
     font-size: 24px;
   }
   .dropdown-item{
-    color: #E3CAA5;
-    border-bottom: #E3CAA5 2px solid;
+    color:#fffaf0;
+    border-bottom: floralwhite 2px solid;
     font-size: 1.5rem;
   }
   .dropdown-item:hover{
     background-color: #AD8B73;
-    color: #E3CAA5;
+    color: floralwhite;
   }
   .offcanvas{
     background-color: #AD8B73;
