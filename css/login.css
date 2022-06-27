@@ -49,9 +49,12 @@
   .containerHeader{
     max-width: 1000px;
     margin: auto;
-    padding: 1rem 0;
     display: grid;
-    grid-template-columns: 15% 50% 20% 15%;
+    grid-template-columns: 30% 50% 10% 5%;
+  }
+  #divLogoHeader{
+    padding: 0.5rem 25%;
+    margin: 0 auto;
   }
   .imgLogo{
     height: 80px;
@@ -67,7 +70,7 @@
   }
   .inputHeader{
     border: none;
-    border-bottom: #E3CAA5 3px solid;
+    border-bottom: #faebd7 3px solid;
     border-radius: 5px;
     background-color: #AD8B73;
     width: 250px;
@@ -140,6 +143,11 @@ footer{
   .footerIg{
     margin-bottom: 1rem;
   }
+  .footerIg:hover,
+  .footerFb:hover{
+    transform: rotate(360deg);
+    transition: ease-in-out 1s 0.2s;
+  }
   .alignCenter{
     text-align: center;
   }
@@ -150,6 +158,10 @@ footer{
     /* HEADER */
     .containerHeader{
       padding: 1rem;
+      grid-template-columns: 20% 50% 15% 15%;
+    }
+    .containerHeader div{
+      margin: auto;
     }
     .menuHamburguesa{
       display: flex;
@@ -200,5 +212,9 @@ footer{
     }
     .containerFooter div{
       margin: 0.5rem 0 0.5rem 0;
+    }
+    .footerIg:hover,
+    .footerFb:hover{
+      transform: none;
     }
   }

@@ -92,6 +92,12 @@ h3{
     margin: 0;
     padding: 1rem 0 0 0;
 }
+/* FOOTER */
+.footerIg:hover,
+.footerFb:hover{
+  transform: rotate(360deg);
+  transition: ease-in-out 1s 0.2s;
+}
 @media (max-width: 1200px) {
     .carousel{
         margin: 0 auto;
@@ -103,8 +109,15 @@ h3{
     .card{
         margin: 1rem auto;
     }
+    .footerIg:hover,
+    .footerFb:hover{
+    transform: none;
+    }
 }
 @media (max-width: 768px) {
+    .containerHeader div{
+        margin: auto;
+      }
     .carousel{
         margin: 0 auto;
     }
@@ -113,5 +126,9 @@ h3{
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .footerIg:hover,
+    .footerFb:hover{
+        transform: none;
     }
 }

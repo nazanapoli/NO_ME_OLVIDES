@@ -25,3 +25,18 @@
 .accordion-item {
     background-color: antiquewhite;
 }
+/* FOOTER */
+.footerIg:hover,
+.footerFb:hover{
+  transform: rotate(360deg);
+  transition: ease-in-out 1s 0.2s;
+}
+@media (max-width: 768px) {
+    .containerHeader div{
+      margin: auto;
+    }
+    .footerIg:hover,
+    .footerFb:hover{
+    transform: none;
+    }
+}

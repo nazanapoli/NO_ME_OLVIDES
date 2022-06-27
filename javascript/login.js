@@ -1,7 +1,9 @@
 class registroUsuario {
-    constructor (usuario, password){
+    constructor (usuario, password,nombre,correo){
         this.usuario=usuario
         this.password=password
+        this.nombre=nombre
+        this.correo=correo
     }
 }
 const validacionesLogin = (contadorP,mensaje, formulario) => {
@@ -27,7 +29,6 @@ let btnRegistrarse = document.getElementById('btnRegistrarse')
 let usuarioSesion = document.getElementById('usuarioSesion')
 let usuarioPassword = document.getElementById('usuarioPassword')
 
-
 btnRegistrarse.addEventListener('click',(e)=>{
     if(!inputNombre.value||!inputCorreo.value||!inputPass.value||!inputNombre.value.trim()||!inputCorreo.value.trim()||!inputPass.value.trim()||inputCorreo.value.includes('@')==false){
         e.preventDefault()
@@ -36,22 +37,20 @@ btnRegistrarse.addEventListener('click',(e)=>{
     } else {
         e.preventDefault()
         //toma los valores de los input
-        localStorage.setItem('nombre',inputNombre.value)
-        localStorage.setItem('correo',inputCorreo.value)
-        localStorage.setItem('pass',inputPass.value)
+        let nombre = inputNombre.value
+        let correo = inputCorreo.value
         //con los valores guardados un crea usuario
-        let caracteresNombre = localStorage.getItem('nombre').substring(0,3)
-        let caracteresCorreo = localStorage.getItem('correo').substring(0,4)
+        let caracteresNombre = nombre.substring(0,3)
+        let caracteresCorreo = correo.substring(0,4)
+        let password = inputPass.value
         let usuario =`${caracteresCorreo}${Math.floor((Math.random()*(98-1))+1)}${caracteresNombre}`
-        let password = localStorage.getItem('pass')
         //setea usuario y muestra en pantalla
-        localStorage.setItem('usuario',usuario)
-        usuariosRegistrados.push(new registroUsuario (usuario,password))
+        usuariosRegistrados.push(new registroUsuario (usuario,password,nombre,correo))
         localStorage.setItem('BaseUsuarios',JSON.stringify(usuariosRegistrados))
         Swal.fire({       
             confirmButtonColor: "#AD8B73",
             title:'Usuario registrado',
-            text:`Tu usuario es: ${localStorage.getItem('usuario')}`,
+            text:`Tu usuario es: ${usuario}`,
             icon:'success',
             })
         }
@@ -74,4 +73,3 @@ btnSesion.addEventListener('click',()=>{
             }
     })
 }})
-

@@ -15,6 +15,17 @@ formulario.addEventListener("submit",(e)=>{
             formulario.append(completarCampos);
         }
     } else {
-        alert('Tus datos fueron enviados correctamente')
+        e.preventDefault()
+        Swal.fire({       
+            confirmButtonColor: "#AD8B73",
+            title:'Tus datos han sido enviados correctamente',
+            text:`Te contestaremos a la brevedad`,
+            icon:'success',
+            timer: 3000
+            })
+        inputNombre.value=''
+        inputMail.value=''
+        textArea.value=''
+        }
     }
-})
+)

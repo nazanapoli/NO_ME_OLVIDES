@@ -34,7 +34,9 @@
                       </div>
                     </div>
                   </div>
-                <a href="index.html"><img src="images/logo.jpg" class="imgLogo ocultarResponsive" alt="Logo"></a>
+                <div class="divLogoHeader ocultarResponsive" id="divLogoHeader">
+                    <a href="index.html"><img src="images/logo.jpg" class="imgLogo ocultarResponsive" alt="Logo"></a>
+                </div>
             </div>
             <div class="marginAuto">
                 <a href="index.html"><img src="images/logo.jpg" class="displayNone imgLogo mostrarResponsive" alt="Logo"></a>
@@ -44,12 +46,11 @@
                 </form>
             </div>
             <div class="marginAuto">
-                <img src="images/user.png" class="mostrarResponsive displayNone" alt="">
-                <a href="login.html" class="ocultarResponsive">Registro |</a>
-                <a href="login.html" class="ocultarResponsive">Iniciar sesion</a>
+                <a href="login.html"><img src="images/user.png" width="24px" height="24px" class="mostrarResponsive displayNone" alt=""></a>
+                <a href="login.html"><img src="images/user.png" width="24px" height="24px" class="ocultarResponsive" alt=""></a>
             </div>
             <div class="marginAuto">
-                <a href=""><img src="images/carrito.png" alt=""></a>
+                <a href="carrito.html"><img src="images/carrito.png" alt=""></a>
             </div>
         </div>
     </header>
@@ -66,11 +67,15 @@
                         </div>
                         <div class="containerInput" id="containerInput">
                             <input type="radio" name="filtro" value="1001" id="EntreXeY">
-                            <label for="EntreXeY">$1000  $1500</label>
+                            <label for="EntreXeY">$1000 - $1500</label>
                         </div>
                         <div class="containerInput" id="containerInput">
                             <input type="radio" name="filtro" value="1500" id="desde">
                             <label for="desde">Desde $1500</label>
+                        </div>
+                        <div class="containerInput" id="containerInput">
+                            <input type="radio" name="filtro" id="inputMostrarTodo">
+                            <label for="mostrarTodo">Mostrar todo</label>
                         </div>
                     </div>
                 </div>

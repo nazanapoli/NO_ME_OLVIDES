@@ -1,0 +1,297 @@
+* {
+    margin: auto;
+    padding: 0;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 400; }
+  body{
+    background-color: antiquewhite;
+  }
+  main{
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  div{
+    margin: 0;
+  }
+  a{
+    text-decoration: none;
+    color: antiquewhite;
+  }
+  a:hover{
+    color: #e1d2bcb7;
+  }
+  h5,
+  h6{
+    font-weight: 600;
+    color: antiquewhite;
+  }
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li{
+    color: antiquewhite;
+  }
+  .marginAuto{
+    margin: auto;
+  }
+  /*      HEADER         */
+  .displayNone{
+    display: none;
+  }
+  header{
+    background: #AD8B73;
+  }
+  .containerHeader{
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 30% 50% 10% 5%;
+  }
+  #divLogoHeader{
+    padding: 0.5rem 25%;
+    margin: 0 auto;
+  }
+  .imgLogo{
+    height: 80px;
+  }
+  .menuHamburguesa{
+    display: none;
+  }
+  .btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: #AD8B73;
+    border-color: #E3CAA5;
+    box-shadow: none;
+  }
+  .inputHeader{
+    border: none;
+    border-bottom: #faebd7 3px solid;
+    border-radius: 5px;
+    background-color: #AD8B73;
+    width: 250px;
+  }
+  .btnHeader{
+    border: none;
+    background-color: #AD8B73;
+  }
+  .user{
+    display: none;
+  }
+  /* MAIN */
+  #contenedorListaDeProductos{
+    padding: 1rem 0 0 0;
+  }
+  .listaProductosParaMostrar{
+      height: 60px;
+  }
+  .productoExistenteEnCarrito {
+      display: grid;
+      grid-template-columns: 15% 40% 40% 5%;
+      padding: 0.5rem 0;
+      border-radius: 5px;
+      border-bottom: 3px solid #AD8B73;
+  }
+  .productoExistenteEnCarrito img{
+      height: 60px;
+      width: 60px;
+  }
+  .infoProducto{
+      color: black;
+      font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      width: 100%;
+  }
+  .botonEliminar{
+      height: 25px;
+      width: 25px;
+      border: none;
+      border-radius: 50%;
+      background-color: rgb(146, 24, 24);
+      color: wheat;
+  }
+  #totalDelCarrito{
+      text-align: end;
+      font-weight: bold;
+      color: black;
+      padding: 0.5rem;
+  }
+  /* Formulario de pago */
+  #formularioFacturacion{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 0 1rem 0;
+  }
+  #formularioFacturacion div{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+  #formularioFacturacion label{
+    margin: 0;
+    font-weight: bold;
+  }
+  #formularioFacturacion input{
+    margin: 0 1rem 0 0;
+    border: 1px solid gray;
+    background-color: antiquewhite;
+    height: 42px;
+  }
+  #CVV{
+    width: 20%;
+    text-align: center;
+  }
+  #enviarPedido{
+    margin: 0 auto;
+  }
+  .css-button-arrow--black {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    overflow: hidden;
+    border-radius: 5px;
+    border: none;
+    background-color: #343a40
+  }
+  .css-button-arrow--black:hover {
+    border-radius: 5px;
+    padding-right: 24px;
+    padding-left:8px;
+  }
+  .css-button-arrow--black:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
+  .css-button-arrow--black:after {
+    content: "\00BB";
+    position: absolute;
+    opacity: 0;
+    font-size: 20px;
+    line-height: 40px;
+    top: 0;
+    right: -20px;
+    transition: 0.4s;
+  }
+  .mensajeCompletar{
+    font-weight: bold;
+    color: red;
+  }
+    /*    FOOTER    */
+  footer{
+    background: #AD8B73;
+  }
+  .containerFooter{
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+  }
+  .footerIg{
+    margin-bottom: 1rem;
+  }
+  .footerIg:hover,
+  .footerFb:hover{
+    transform: rotate(360deg);
+    transition: ease-in-out 1s 0.2s;
+  }
+  .alignCenter{
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    /* HEADER */
+    .containerHeader{
+      padding: 1rem;
+      grid-template-columns: 20% 50% 15% 15%;
+    }
+    .containerHeader div{
+      margin: auto;
+    }
+    .menuHamburguesa{
+      display: flex;
+    }
+    .btn{
+      background-color: #AD8B73;
+      border: none;
+    }
+    .btn:hover{
+      background-color: #AD8B73;
+    }
+    h5{
+      font-size: 24px;
+    }
+    .dropdown-item{
+      color:#fffaf0;
+      border-bottom: floralwhite 2px solid;
+      font-size: 1.5rem;
+    }
+    .dropdown-item:hover{
+      background-color: #AD8B73;
+      color: floralwhite;
+    }
+    .offcanvas{
+      background-color: #AD8B73;
+    }
+    .ocultarResponsive{
+      display: none;
+    }
+    .mostrarResponsive{
+      display: flex;
+    }
+    /* MAIN */
+    main{
+      display: flex;
+      flex-direction: column;
+      width: auto;
+    }
+    #contenedorListaDeProductos{
+      padding: 1rem;
+    }
+    #contenedorListaDeProductos img{
+      height: 40px;
+      width: 40px;
+    }
+    .botonEliminar{
+      height: 15px;
+      width: 15px;
+      background-color: antiquewhite;
+      color: red;
+      font-weight: bold;
+  }
+    #contenedorFacturacion{
+      padding: 1rem;
+    }
+    #formularioFacturacion{
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      margin-bottom: 0;
+    }
+    .mensajeCompletar{
+      margin: 0 auto;
+    }
+  /* FOOTER */
+   .containerFooter{
+      max-width: 1000px;
+      margin: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .containerFooter div{
+      margin: 0.5rem 0 0.5rem 0;
+    }
+    .footerIg:hover,
+    .footerFb:hover{
+      transform: none;
+    }
+  }
