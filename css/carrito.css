@@ -161,7 +161,7 @@
     overflow: hidden;
     border-radius: 5px;
     border: none;
-    background-color: #343a40
+    background-color: #AD8B73;
   }
   .css-button-arrow--black:hover {
     border-radius: 5px;
@@ -186,9 +186,27 @@
     font-weight: bold;
     color: red;
   }
+  .medidas{
+    width: 150px;
+    margin: auto;
+    display: flex;
+  }
+  .mensajeAgregarProductos{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  .botonSinProductosEnCarrito{
+    width: 30%;
+    margin: auto;
+    display: block;
+  }
     /*    FOOTER    */
   footer{
     background: #AD8B73;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
   .containerFooter{
     max-width: 1000px;
@@ -207,6 +225,9 @@
   }
   .alignCenter{
     text-align: center;
+  }
+  .footerConProductos{
+    position: static;
   }
   @media (max-width: 768px) {
     /* HEADER */
@@ -279,7 +300,13 @@
     .mensajeCompletar{
       margin: 0 auto;
     }
+    .mensajeAgregarProductos{
+      font-weight: 400;
+    }
   /* FOOTER */
+  footer{
+    position: static;
+  }
    .containerFooter{
       max-width: 1000px;
       margin: auto;

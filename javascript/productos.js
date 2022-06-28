@@ -1,11 +1,15 @@
-// import Producto from './classVelas.js'
-import {arrayStock} from './classVelas.js';
-// const arrayStock = [
-//   new Producto(1,'Vela Apoel','500g','Coconut',670,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/218fcfac-ceef-4def-8741-d89354205f28-2548678907693e45d716442702125362-640-0.jpeg'),
-//   new Producto(2,'Vela Burgio','350g','Lemon Grass',900,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/b377a23a-e5b6-40cc-9f05-fb4ba9a34e1d-494f38c12054145f3116346029035665-640-0.jpeg'),
-//   new Producto(3,'Vela Casteldefells','475g','Vainilla',1599,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/8e7a69cb-8b9d-4cdf-8d2d-97ba44dcdfd3-012cc258c7d14151f316442582167641-1024-1024.jpeg'),
-//   new Producto(4,'Vela Dinamo','270g','Chocolate',1099,'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/261/858/products/fc271cb4-6163-418f-b87c-b52b0279d715_nube-764eb6126f8a181d3616065106131993-640-0.jpg'),
-// ];
+import Producto,{obtenerVelas} from './classVelas.js';
+obtenerVelas()
+.then((resp)=>resp.json())
+.then((data)=>{
+  const arrayStock = []
+  data.forEach(element => {
+    const nuevoProducto = new Producto (element.id,element.nombre,element.peso,element.aroma,element.precio,element.imagen)
+    arrayStock.push(nuevoProducto)
+  });
+  return arrayStock
+})
+.then((arrayStock)=>{
 // Desestructuraciones
 const nombreProducto = (productoADesestructurar) => {
   const {nombre} = productoADesestructurar
@@ -19,7 +23,7 @@ const precioProducto = (productoADesestructurar) => {
 // let carritoLocalStorage
 let subtotalMostrado = []
 let subtotalGuardadoLS = localStorage.getItem('carritoValor')
-let carrito = []
+let carrito = JSON.parse(localStorage.getItem('carritoAgregado'))?.carrito||[]
 // GetElement
 let main = document.getElementById('main');
 let divCarrito = document.getElementById('divCarrito');
@@ -67,7 +71,9 @@ function subtotal(vela) {
 //anade a carrito si hay algo en localstorage
 function cargarProductosCarritoLocalStorage(){
   let unidadesEnLocalStorage = JSON.parse(localStorage.getItem('carritoAgregado'))
-  if(unidadesEnLocalStorage!=null&&unidadesEnLocalStorage!=undefined&&!unidadesEnLocalStorage){ 
+  console.log(unidadesEnLocalStorage)
+
+  if(unidadesEnLocalStorage!=null){ 
     unidadesEnLocalStorage.carrito.forEach(element => {
     console.log(`${element.item.nombre} x${element.cantidad}uni.`)
     let liProducto = document.createElement('li');
@@ -202,15 +208,4 @@ aroma4.addEventListener('change',()=>filtroPorAroma(aroma4) ,false)
 //   const element = JSON.parse(localStorage.getItem('carritoAgregado')).carrito[i];
 //   console.log(`${element.item.nombre} x${element.cantidad}uni.`)
 // }
-
-// let valorAnteriorDelCarrito = [{cantidad:1,item:'...'}]
-// let stringCarritoAgregado = localStorage.getItem('carritoAgregado')
-// let carritoAgregadoPrueba = JSON.parse(stringCarritoAgregado)
-// // ir cambiando el arreglo
-// for(let i = 0; i <carritoAgregadoPrueba.carrito.length; i++){
-//     // se consigue un nuevo array para añadir
-//     var carritoActualizado = carritoAgregadoPrueba.carrito.concat(valorAnteriorDelCarrito)
-//     console.log(carritoActualizado)
-// }
-// let carritoActualizadoJSON = JSON.stringify(carritoActualizado)
-// localStorage.setItem('carritoAgregado', carritoActualizadoJSON)
+})
