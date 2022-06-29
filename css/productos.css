@@ -231,8 +231,8 @@ footer{
 .alignCenter{
   text-align: center;
 }
-#sugerenciaUsuario li{
-  color: black;
+.btnRealizarPedido{
+  display: flex;
 }
 @media (max-width: 768px) {
   /* HEADER */

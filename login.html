@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <script defer src="javascript/login.js"></script>
+    <script defer src="javascript/login.js" type="module"></script>
+    <script defer src="./javascript/validacionInicioSesion.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -47,8 +48,8 @@
                 </form>
             </div>
             <div class="marginAuto">
-                <a href="login.html"><img src="images/user.png" width="24px" height="24px" class="mostrarResponsive displayNone" alt=""></a>
-                <a href="login.html"><img src="images/user.png" width="24px" height="24px" class="ocultarResponsive" alt=""></a>
+                <a href="login.html" id="linkLoginMobile"><img src="images/user.png" width="24px" height="24px" class="mostrarResponsive displayNone" alt=""></a>
+                <a href="login.html" id="linkLoginDesk"><img src="images/user.png" width="24px" height="24px" class="ocultarResponsive" alt=""></a>
             </div>
             <div class="marginAuto">
                 <a href="carrito.html"><img src="images/carrito.png" alt=""></a>
@@ -65,7 +66,7 @@
                 <label for="" class="marginLabel">Usuario</label>
                 <input type="text" class="marginInput" id="usuarioSesion">
                 <label for="" class="marginLabel">Contraseña</label>
-                <input type="text" class="marginInput" id="usuarioPassword">
+                <input type="password" class="marginInput" id="usuarioPassword">
                 <button class="btn-sesion" id="btnSesion">Iniciar Sesion</button>
             </div>
         </div>

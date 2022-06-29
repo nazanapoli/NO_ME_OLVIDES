@@ -4,7 +4,7 @@ let textArea = document.getElementById('textArea')
 let formulario = document.getElementById('formulario')
 let botonEnviar = document.getElementById('btnEnviar')
 let contador = 0
-
+//Validacion y reset de formulario
 formulario.addEventListener("submit",(e)=>{
     if(!inputNombre.value||!inputMail.value||!textArea.value.trim()||!inputNombre.value.trim()){
         e.preventDefault()
@@ -23,9 +23,7 @@ formulario.addEventListener("submit",(e)=>{
             icon:'success',
             timer: 3000
             })
-        inputNombre.value=''
-        inputMail.value=''
-        textArea.value=''
+        formulario.reset()
         }
     }
 )

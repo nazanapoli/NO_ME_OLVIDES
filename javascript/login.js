@@ -15,7 +15,7 @@ const validacionesLogin = (contadorP,mensaje, formulario) => {
     }
 }
 // variables a usar
-const usuariosRegistrados = []
+const usuariosRegistrados = JSON.parse(localStorage.getItem('BaseUsuarios'))||[]
 let contadorRegistro = 0
 let contadorSesion = 0
 //GetElement
@@ -28,7 +28,7 @@ let btnSesion = document.getElementById('btnSesion')
 let btnRegistrarse = document.getElementById('btnRegistrarse')
 let usuarioSesion = document.getElementById('usuarioSesion')
 let usuarioPassword = document.getElementById('usuarioPassword')
-
+//Valida el registro y en caso de que los campos esten completos crea un usuario
 btnRegistrarse.addEventListener('click',(e)=>{
     if(!inputNombre.value||!inputCorreo.value||!inputPass.value||!inputNombre.value.trim()||!inputCorreo.value.trim()||!inputPass.value.trim()||inputCorreo.value.includes('@')==false){
         e.preventDefault()
@@ -54,9 +54,7 @@ btnRegistrarse.addEventListener('click',(e)=>{
             icon:'success',
             })
         }
-        inputCorreo.value=''
-        inputNombre.value=''
-        inputPass.value=''
+        formularioRegistro.reset()
 })
 // validaciones e inicio de sesion
 btnSesion.addEventListener('click',()=>{
@@ -66,7 +64,8 @@ btnSesion.addEventListener('click',()=>{
     } else {
         usuariosRegistrados.forEach(usuario => {
             if(usuario.usuario===usuarioSesion.value&&usuario.password===usuarioPassword.value){
-                window.location.href='./index.html'
+                window.location.href='./miCuenta.html'
+                localStorage.setItem('usuarioEnSesion',usuarioSesion.value)
             } else {
                 contadorSesion++
                 validacionesLogin(contadorSesion,'¡Usuario o contraseña incorrecta!',formularioSesion)

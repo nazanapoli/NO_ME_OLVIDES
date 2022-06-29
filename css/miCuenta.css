@@ -1,0 +1,228 @@
+* {
+    margin: auto;
+    padding: 0;
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 400; }
+  body{
+    background-color: #E3CAA5;
+  }
+  a{
+    text-decoration: none;
+    color: antiquewhite;
+  }
+  a:hover{
+    color: #e1d2bcb7;
+  }
+  aside{
+    margin: 0;
+  }
+  h3,
+  h4{
+    text-align: center;
+  }
+  h5,
+  h6{
+    font-weight: 600;
+    color: antiquewhite; 
+  }
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li{
+    color: antiquewhite;
+  }
+  .marginAuto{
+    margin: auto;
+  }
+  /*      HEADER         */
+  .displayNone{
+    display: none;
+  }
+  header{
+    background: #AD8B73;
+  }
+  .containerHeader{
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 30% 50% 10% 5%;
+  }
+  #divLogoHeader{
+    padding: 0.5rem 25%;
+    margin: 0 auto;
+  }
+  .imgLogo{
+    height: 80px;
+  }
+  .menuHamburguesa{
+    display: none;
+  }
+  .btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: #AD8B73;
+    border-color: #E3CAA5;
+    box-shadow: none;
+  }
+  .inputHeader{
+    border: none;
+    border-bottom: #faebd7 3px solid;
+    border-radius: 5px;
+    background-color: #AD8B73;
+    width: 250px;
+  }
+  .btnHeader{
+    border: none;
+    background-color: #AD8B73;
+  }
+  .user{
+    display: none;
+  }
+
+  /* main */
+  main{
+    max-width: 1000px;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 20% 80%;
+  }
+  .contenedorImgUsuario{
+    height: 200px;
+    border-right: 5px solid #AD8B73;
+    border-radius: 5%;
+  }
+  .contenedorImgUsuario img{
+    display: flex;
+    margin: auto;
+    border-radius: 50%;
+  }
+  #nombreUsuario{
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+  .misDatos{
+    font-weight: bold;
+  }
+  .contenedorDatos{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: "misDatos misDatos"
+                         "nombre mail"
+                         "usuario btnLogOut"
+
+  }
+  .misDatos{
+    grid-area: misDatos;
+  }
+  #botonLogOut{
+    margin: auto;
+    height: 30%;
+    width: 40%;
+    border: none;
+    color: aliceblue;
+    background-color: brown;
+    border-radius: 5px;
+  }
+   /*    FOOTER    */
+footer{
+    background: #AD8B73;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .containerFooter{
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+  }
+  .footerIg{
+    margin-bottom: 1rem;
+  }
+  .footerIg:hover,
+  .footerFb:hover{
+    transform: rotate(360deg);
+    transition: ease-in-out 1s 0.2s;
+  }
+  .alignCenter{
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    /* HEADER */
+    .containerHeader{
+      padding: 1rem;
+      grid-template-columns: 20% 50% 15% 15%;
+    }
+    .containerHeader div{
+      margin: auto;
+    }
+    .menuHamburguesa{
+      display: flex;
+    }
+    .btn{
+      background-color: #AD8B73;
+      border: none;
+    }
+    .btn:hover{
+      background-color: #AD8B73;
+    }
+    h5{
+      font-size: 24px;
+    }
+    .dropdown-item{
+      color: #faebd7;
+      border-bottom: #faebd7 2px solid;
+      font-size: 1.5rem;
+    }
+    .dropdown-item:hover{
+      background-color: #AD8B73;
+      color: #E3CAA5;
+    }
+    .offcanvas{
+      background-color: #AD8B73;
+    }
+    .ocultarResponsive{
+      display: none;
+    }
+    .mostrarResponsive{
+      display: flex;
+    }
+    /* main */
+    main{
+        display: flex;
+        flex-direction: column;
+    }
+    .contenedorImgUsuario{
+        border-right: 0;
+        border-bottom: 5px solid #AD8B73;
+        margin-bottom: 1rem;
+    }
+    .contenedorDatos{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+  /* FOOTER */
+  footer{
+    position: static;
+  }
+   .containerFooter{
+      max-width: 1000px;
+      margin: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .containerFooter div{
+      margin: 0.5rem 0 0.5rem 0;
+    }
+    .footerIg:hover,
+    .footerFb:hover{
+      transform: none;
+    }
+  }

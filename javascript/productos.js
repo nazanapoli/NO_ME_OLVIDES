@@ -20,7 +20,6 @@ const precioProducto = (productoADesestructurar) => {
   return precio
 }
 // Variables
-// let carritoLocalStorage
 let subtotalMostrado = []
 let subtotalGuardadoLS = localStorage.getItem('carritoValor')
 let carrito = JSON.parse(localStorage.getItem('carritoAgregado'))?.carrito||[]
@@ -33,10 +32,15 @@ let subtotalProductos = document.getElementById('subtotalProductos')
 let vaciarCarrito = document.getElementById('vaciarCarrito');
 let busqueda = document.getElementById('busqueda');
 let lupa = document.getElementById('lupa');
+//getElement (Checkbox Precio)
+let primerCheckboxPrecio = document.getElementById('menosDeMil')
+let segundoCheckboxPrecio = document.getElementById('EntreXeY')
+let tercerCheckboxPrecio = document.getElementById('desde')
+let mostrarTodosProductos = document.getElementById('inputMostrarTodo')
 // CreateElement
 let containerInput = document.createElement('div');
 //Funciones
-function tareaConReduce (){
+function tareaConReduce (){ //Funcion para reducir el carrito
   return subtotalMostrado.reduce((previo, actual) => previo + actual, +subtotalGuardadoLS)
 }
 //Muestra en el carrito la cantidad de productos agregados
@@ -65,17 +69,13 @@ function subtotal(vela) {
   divCarrito.append(containerInput);
   if(subtotalMostrado!==''){
     let carritoLocalStorage = localStorage.setItem('carritoValor', subtotalLS);
-    // let subtotalGuardadoLS = localStorage.getItem('carritoValor')
   }
 }
 //anade a carrito si hay algo en localstorage
 function cargarProductosCarritoLocalStorage(){
   let unidadesEnLocalStorage = JSON.parse(localStorage.getItem('carritoAgregado'))
-  console.log(unidadesEnLocalStorage)
-
   if(unidadesEnLocalStorage!=null){ 
     unidadesEnLocalStorage.carrito.forEach(element => {
-    console.log(`${element.item.nombre} x${element.cantidad}uni.`)
     let liProducto = document.createElement('li');
     liProducto.textContent = `${element.item.nombre} x${element.cantidad}uni.`;
     liProducto.classList.add('cantidadProductos');
@@ -84,6 +84,7 @@ function cargarProductosCarritoLocalStorage(){
   }
 // CARGA AUTOMATICA DE CARDS Y CARRITO
 function cargaProductos(arFiltrado) {
+  carritoLista.innerHTML=''
   cargarProductosCarritoLocalStorage()
   main.innerHTML = ''
   arFiltrado.forEach((vela) => {
@@ -118,7 +119,7 @@ function cargaProductos(arFiltrado) {
     botonCompra.classList.add('btnCompra');
     botonCompra.textContent = '+';
     botonCompra.addEventListener('click', () => subtotal(vela.id-1));
-    // Interaccion con DOM
+    // Agrega elementos al DOM
     card.appendChild(imagenProducto);
     card.appendChild(cardBody);
     cardBody.appendChild(title);
@@ -128,8 +129,8 @@ function cargaProductos(arFiltrado) {
     cardCompra.appendChild(botonCompra);
     main.appendChild(card);
   });
-  subtotalProductos.innerText = (!subtotalGuardadoLS) ? `Subtotal: $0`:`Subtotal: $${subtotalGuardadoLS}`
- //valor que aparece en 'subtotal' (carrito)
+  subtotalProductos.innerText = (!subtotalGuardadoLS) ? `Subtotal: $0`:`Subtotal: $${subtotalGuardadoLS}` //Valor que muestra en el subtotal en caso de no haber nada en carrito
+  //Boton para borrar TODO el carrito
   divCarrito.append(vaciarCarrito);
   vaciarCarrito.addEventListener('click', () => {
     subtotalMostrado.splice(0, subtotalMostrado.length);
@@ -152,45 +153,6 @@ function checkboxPrecio(param){
   }
   filtroPorPrecio(arrayStock)
 }
-//creacion de filtro aromas en HTML
-let idAromas = 1 //genera ID dinamicos
-for (const vela of arrayStock) {
-  let containerInput = document.createElement('div');
-  containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" value="${vela.aroma}" name="filtro" id="aroma${idAromas++}"><label for="no">${vela.aroma}</label></div>`;
-  divFiltroAroma.append(containerInput);
-}
-cargaProductos(arrayStock)
-// busqueda con input y lupa
-const filtroPorBusqueda = () => {
-  const busquedaUsuario = busqueda.value.toUpperCase()
-  const arFiltrado = arrayStock.filter((vela)=>{
-    return nombreProducto(vela).includes(busquedaUsuario) == true
-  });
-  (arFiltrado.length==0)?main.innerHTML = `Producto no encontrado`:cargaProductos(arFiltrado)
-}
-lupa.addEventListener('click',filtroPorBusqueda)
-busqueda.addEventListener('keyup',()=>{
-  (busqueda.value=='')?cargaProductos(arrayStock):filtroPorBusqueda()
-})
-//Filtro Por Precio
-//getElement
-let primerCheckboxPrecio = document.getElementById('menosDeMil')
-let segundoCheckboxPrecio = document.getElementById('EntreXeY')
-let tercerCheckboxPrecio = document.getElementById('desde')
-let mostrarTodosProductos = document.getElementById('inputMostrarTodo')
-//Filtro que carga todos los productos
-mostrarTodosProductos.addEventListener('change',()=>cargaProductos(arrayStock),false)
-//1check
-primerCheckboxPrecio.addEventListener('change',()=>checkboxPrecio(arrayStock.filter((vela)=>{return vela.precio<=primerCheckboxPrecio.value})),false)
-// 2check
-segundoCheckboxPrecio.addEventListener('change',()=>checkboxPrecio(arrayStock.filter((vela)=>{return (vela.precio>segundoCheckboxPrecio.value && vela.precio<tercerCheckboxPrecio.value)})),false)
-//3check
-tercerCheckboxPrecio.addEventListener('change',()=>checkboxPrecio(arrayStock.filter((vela)=>{return vela.precio>= tercerCheckboxPrecio.value})),false)
-//filtro por aroma
-let aroma1 = document.getElementById('aroma1')
-let aroma2 = document.getElementById('aroma2')
-let aroma3 = document.getElementById('aroma3')
-let aroma4 = document.getElementById('aroma4')
 //funcion que filtra por aroma seleccionado
 const filtroPorAroma = (aroma) => {
   const arFiltradoAroma = arrayStock.filter((vela)=>{
@@ -198,14 +160,38 @@ const filtroPorAroma = (aroma) => {
   });
   (arFiltradoAroma.length==0)?main.innerHTML = `Producto no encontrado`:cargaProductos(arFiltradoAroma)
 }
-aroma1.addEventListener('change',()=>filtroPorAroma(aroma1) ,false)
-aroma2.addEventListener('change',()=>filtroPorAroma(aroma2) ,false)
-aroma3.addEventListener('change',()=>filtroPorAroma(aroma3) ,false)
-aroma4.addEventListener('change',()=>filtroPorAroma(aroma4) ,false)
-
-// console.log(localStorage.getItem('carritoAgregado'))
-// for (let i = 0; i < JSON.parse(localStorage.getItem('carritoAgregado')).carrito.length; i++) {
-//   const element = JSON.parse(localStorage.getItem('carritoAgregado')).carrito[i];
-//   console.log(`${element.item.nombre} x${element.cantidad}uni.`)
-// }
+const filtroPorBusqueda = () => { //Funcion para barra de busqueda
+  const busquedaUsuario = busqueda.value.toUpperCase()
+  const arFiltrado = arrayStock.filter((vela)=>{
+    return nombreProducto(vela).includes(busquedaUsuario) == true
+  });
+  (arFiltrado.length==0)?main.innerHTML = `Producto no encontrado`:cargaProductos(arFiltrado)
+}
+//creacion de filtro aromas en HTML
+let idAromas = 1 //genera ID dinamicos
+for (const vela of arrayStock) {
+  let containerInput = document.createElement('div');
+  containerInput.innerHTML = `<div class="containerInput" id="containerInput"><input type="radio" value="${vela.aroma}" name="filtro" id="aroma${idAromas++}"><label for="no">${vela.aroma}</label></div>`;
+  divFiltroAroma.append(containerInput);
+}
+cargaProductos(arrayStock) //Llamado para cargar los productos
+// Busqueda con input y lupa
+lupa.addEventListener('click',filtroPorBusqueda)
+busqueda.addEventListener('keyup',()=>{
+  (busqueda.value=='')?cargaProductos(arrayStock):filtroPorBusqueda()
+})
+//Filtro Por Precio
+//Filtro que carga todos los productos
+mostrarTodosProductos.addEventListener('change',()=>cargaProductos(arrayStock),false)
+//Primer check
+primerCheckboxPrecio.addEventListener('change',()=>checkboxPrecio(arrayStock.filter((vela)=>{return vela.precio<=primerCheckboxPrecio.value})),false)
+//Segundo check
+segundoCheckboxPrecio.addEventListener('change',()=>checkboxPrecio(arrayStock.filter((vela)=>{return (vela.precio>segundoCheckboxPrecio.value && vela.precio<tercerCheckboxPrecio.value)})),false)
+//Tercer check
+tercerCheckboxPrecio.addEventListener('change',()=>checkboxPrecio(arrayStock.filter((vela)=>{return vela.precio>= tercerCheckboxPrecio.value})),false)
+//Toma checkbox de aromas y les agrega su evento
+document.getElementById('aroma1').addEventListener('change',()=>filtroPorAroma(aroma1) ,false)
+document.getElementById('aroma2').addEventListener('change',()=>filtroPorAroma(aroma2) ,false)
+document.getElementById('aroma3').addEventListener('change',()=>filtroPorAroma(aroma3) ,false)
+document.getElementById('aroma4').addEventListener('change',()=>filtroPorAroma(aroma4) ,false)
 })
