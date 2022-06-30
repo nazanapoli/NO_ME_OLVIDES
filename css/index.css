@@ -28,6 +28,9 @@ h3{
     grid-template-columns: 1fr 1fr 1fr;
     background-color: aliceblue;
 }
+.precio{
+    width: 100%;
+}
 .h3Contacto{
     background-color: #E3CAA5;
     margin: 0 auto;

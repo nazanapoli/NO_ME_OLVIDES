@@ -11,8 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <script defer src="./javascript/miCuenta.js"></script>
-    <script defer src="./javascript/validacionInicioSesion.js"></script>
+    <script defer src="./javascript/miCuenta.js" type="module"></script>
 </head>
 <body>
     <header>
@@ -41,10 +40,6 @@
             </div>
             <div class="marginAuto">
                 <a href="index.html"><img src="images/logo.jpg" class="displayNone imgLogo mostrarResponsive" alt="Logo"></a>
-                <form class="busqueda">
-                    <input class="inputHeader ocultarResponsive" id="busqueda" type="search" aria-label="Search">
-                    <button class="btnHeader ocultarResponsive" id="lupa" type="button"><img src="images/lupa.png" alt=""></button>
-                </form>
             </div>
             <div class="marginAuto">
                 <a href="login.html" id="linkLoginMobile"><img src="images/user.png" width="24px" height="24px" class="mostrarResponsive displayNone" alt=""></a>
@@ -57,7 +52,7 @@
     </header>
     <main>
         <div class="contenedorImgUsuario">
-            <img src="https://api.lorem.space/image/face?w=150&amp;amp;amp;amp;h=160;" alt="">
+            <img src="http://placekitten.com/g/150/160" alt="imagen usuario">
             <h3 id="nombreUsuario"></h3>
         </div>
         <div class="contenedorDatos">
